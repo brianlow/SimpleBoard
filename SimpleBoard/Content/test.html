@@ -1,0 +1,227 @@
+<html>
+    <head>
+        <title>Simple Story Board</title>
+        <script src="..\Scripts\jquery-1.7.2.js" type="text/javascript"> </script>
+        <script src="..\Scripts\modernizr-2.5.3.js" type="text/javascript"> </script>
+        <script src="..\Scripts\jquery-ui-1.8.20.js" type="text/javascript"> </script>
+        <script src="..\Scripts\MicrosoftAjax.js" type="text/javascript"> </script>
+        <script src="..\Scripts\live.js" type="text/javascript"> </script>
+        <style type="text/css">
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            body {
+                font-family: Calibri, Arial;
+                font-size: 11pt;
+                margin: 0;
+                padding: 0;
+                background-color: whitesmoke;
+            }
+
+            #mainmenu {
+                background-color: #00A849;
+                min-width: 900px;
+                height: 43px;
+            }
+
+            #mainmenu > div { float: left; }
+
+            #mainmenu #logo {
+                float: left;
+                color: white;
+                background-color: #008037;
+                font-size: 22pt;
+                padding: 7px 27px 0px 27px;
+                margin: 0px;
+                height: 43px;
+            }
+
+            #body { padding: 11px 0px 0px 11px; }
+
+            ul {
+                list-style-type: none;
+            }
+
+            li {
+                list-style-type: none;
+            }
+
+            /* --- ListOfLists - layout for the vertical columns --- */
+
+            ul#listOfLists {
+                 min-width: 1200px;
+                /* IE8 min-width hack */
+                width: auto !important;
+                width: 1200px;
+            }
+
+            ul#listOfLists>li 
+            {
+                display: inline;
+                float: left;
+                width: 175px;
+                vertical-align: top;
+                margin-right: 5px;
+            }
+
+            /* --- List of Stories - including header and Add new story link  --- */
+
+            div.listHeader {
+                background-color: #006DAA;
+                color: white;
+                padding-top: 8px;
+                height: 35px;
+                text-align: center;
+                margin-bottom: 3px;
+                width: 175px;
+            }
+
+            ul.list {
+                clear: both;
+            }
+
+            ul.list li {
+                background-color: white;
+                border: #dddddd solid 1px;
+                color: black;
+                min-height: 44px;
+                /* IE8 min-height hack */
+                height: auto !important;
+                height: 44px;
+                margin: 2px 0px 2px 0px;
+                cursor: pointer;
+                width: 175px;
+            }
+
+            ul.list li div { padding: 3px 10px 3px 10px; }
+
+            div.addNewStory {
+                text-align: center;
+                color: #aaaaaa;
+                padding: 10px 0px 10px 0px;
+                margin-bottom: 35px;
+                cursor: pointer;
+                width: 175px;
+            }
+        </style>
+        <script>
+            $(function() {
+                $(".list").sortable({
+                    connectWith: ".list",
+                    distance: 15,
+                    cancel: '.addNewStory',
+                    update: function(event, ui) {
+                        var current = $(ui.item.context);
+                        var previous = current.prev();
+                        var next = current.next();
+                        var newPosition = "0";
+                        if (previous.length === 0 && next.length === 0) {
+                            newPosition = "0";
+                        } else if (previous.length !== 0 && next.length === 0) {
+                            newPosition = parseFloat(previous.attr("data-position")) + 10;
+                        } else if (previous.length === 0 && next.length !== 0) {
+                            newPosition = parseFloat(next.attr("data-position")) - 10;
+                        } else {
+                            var previousPosition = parseFloat(previous.attr("data-position"));
+                            var nextPosition = parseFloat(next.attr("data-position"));
+                            newPosition = previousPosition + ((nextPosition - previousPosition) / 2);
+                        }
+
+                        alert("Move Story " + current.attr("data-id") + " to position " + newPosition + " in list " + current.parent().attr("data-id"));
+                        current.attr("data-position", newPosition);
+                    }
+                }).disableSelection();
+
+                $(".addNewStory").on("click", function(ui) {
+                    var target = $(ui.target);
+                    var ul = target.siblings("ul");
+                    var newStoryName = prompt("New Story Name", "");
+                    var newPosition = 0;
+                    var lastLi = ul.children("li").last();
+                    if (lastLi.length === 1) {
+                        newPosition = parseFloat(lastLi.attr("data-position")) + 10;
+                    }
+                    ul.append($("<li data-id='99' data-position='" + newPosition + "'><div>" + newStoryName + "</div></li>"));
+                });
+
+                $("ul.list").on("click", "li", function(ui) {
+                    var li = $(ui.target).closest("li");
+                    var divInsideLi = li.children("div");
+                    var editedStoryName = prompt("Story Name", divInsideLi.text());
+                    divInsideLi.text(editedStoryName);
+                });
+
+                // TODO: BL - move to empty list
+                // TODO: BL - drag across lists in Chrome / layout in IE (maybe change to use divs for columns?)
+                // TODO: BL - header mucked up
+            });
+        </script>
+    </head>
+    <body>
+        <div id="mainmenu">
+            <div id="logo">
+                TRPS
+            </div>
+            <div style="color: white; padding-left: 10px;">
+                ITERATION 1 STORY BOARD
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div id="body">
+            
+            <ul id="listOfLists">
+                <li>
+                    <div class="listHeader">In Analysis</div>
+                    <ul data-id="InAnalysis" class="list">
+                        <li data-id="100" data-position="0"><div>100 - Create Customer</div></li>
+                        <li data-id="101" data-position="10"><div>101 - Migrate Profile</div></li>
+                        <li data-id="102" data-position="20"><div>102 - Manual Invoice</div></li>
+                        <li data-id="103" data-position="30"><div>103 - Sales Tax</div></li>
+                        <li data-id="104" data-position="40"><div>104 - Single Payment</div></li>
+                    </ul>
+                    <div class="addNewStory">Add new story...</div>
+                </li>
+                <li>
+                    <div class="listHeader">Ready for Dev</div>
+                    <ul data-id="ReadyForDev" class="list">
+                        <li data-id="200" data-position="0"><div>200 - Add Broker</div></li>
+                        <li data-id="201" data-position="10"><div>201 - Migrate Customer</div></li>
+                        <li data-id="202" data-position="20"><div>202 - On-Peak / Off-Peak / Shoulder</div></li>
+                        <li data-id="203" data-position="30"><div>203 - Parse Usage Edi</div></li>
+                    </ul>
+                    <div class="addNewStory">Add new story...</div>
+                </li>
+                <li>
+                    <div class="listHeader">In Dev</div>
+                    <ul data-id="InDev" class="list">
+                    </ul>
+                    <div class="addNewStory">Add new story...</div>
+                </li>
+                <li>
+                    <div class="listHeader">Ready for Test</div>
+                    <ul data-id="ReadyForTest" class="list">
+                    </ul>
+                    <div class="addNewStory">Add new story...</div>
+                </li>
+                <li>
+                    <div class="listHeader">In Test</div>
+                    <ul data-id="InTest" class="list">
+                    </ul>
+                    <div class="addNewStory">Add new story...</div>
+                </li>
+                <li>
+                    <div class="listHeader">Done</div>
+                    <ul data-id="Done" class="list">
+                    </ul>
+                    <div class="addNewStory">Add new story...</div>
+                </li>
+            </ul>
+            
+        </div>
+
+    </body>
+</html>
