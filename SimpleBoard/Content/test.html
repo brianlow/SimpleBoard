@@ -50,9 +50,9 @@
 
             li { list-style-type: none; }
 
-            /* --- ListOfLists - layout for the vertical columns --- */
+            /* --- layout for the vertical columns --- */
 
-            div.list {
+            div.listContainer {
                 display: inline;
                 float: left;
                 width: 175px;
@@ -60,7 +60,7 @@
                 margin-right: 5px;
             }
 
-            /* --- List of Stories - including header and Add new story link  --- */
+            /* --- individual list of stories (header, stories and "Add" link)  --- */
 
             div.listHeader {
                 background-color: #006DAA;
@@ -101,10 +101,10 @@
         <script>
             $(function() {
                 $(".list").sortable({
-                    connectWith: ".list",
+                    connectWith: "ul.list",
                     distance: 15,
                     cancel: '.addNewStory',
-                    update: function(event, ui) {
+                    stop: function(event, ui) {
                         var current = $(ui.item.context);
                         var previous = current.prev();
                         var next = current.next();
@@ -145,8 +145,6 @@
                     divInsideLi.text(editedStoryName);
                 });
 
-                // TODO: BL - move to empty list
-                // TODO: BL - drag across lists in Chrome / layout in IE (maybe change to use divs for columns?)
                 // TODO: BL - header mucked up
             });
         </script>
@@ -165,7 +163,7 @@
 
         <div id="body">
             
-            <div class="list">
+            <div class="listContainer">
                 <div class="listHeader">In Analysis</div>
                 <ul data-id="InAnalysis" class="list">
                     <li data-id="100" data-position="0"><div>100 - Create Customer</div></li>
@@ -176,7 +174,7 @@
                 </ul>
                 <div class="addNewStory">Add new story...</div>
             </div>
-            <div class="list">
+            <div class="listContainer">
                 <div class="listHeader">Ready for Dev</div>
                 <ul data-id="ReadyForDev" class="list">
                     <li data-id="200" data-position="0"><div>200 - Add Broker</div></li>
@@ -186,25 +184,25 @@
                 </ul>
                 <div class="addNewStory">Add new story...</div>
             </div>
-            <div class="list">
+            <div class="listContainer">
                 <div class="listHeader">In Dev</div>
                 <ul data-id="InDev" class="list">
                 </ul>
                 <div class="addNewStory">Add new story...</div>
             </div>
-            <div class="list">
+            <div class="listContainer">
                 <div class="listHeader">Ready for Test</div>
                 <ul data-id="ReadyForTest" class="list">
                 </ul>
                 <div class="addNewStory">Add new story...</div>
             </div>
-            <div class="list">
+            <div class="listContainer">
                 <div class="listHeader">In Test</div>
                 <ul data-id="InTest" class="list">
                 </ul>
                 <div class="addNewStory">Add new story...</div>
             </div>
-            <div class="list">
+            <div class="listContainer">
                 <div class="listHeader">Done</div>
                 <ul data-id="Done" class="list">
                 </ul>
