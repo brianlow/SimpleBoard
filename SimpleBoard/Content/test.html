@@ -72,7 +72,13 @@
                 width: 175px;
             }
 
-            ul.list { clear: both; }
+            ul.list 
+            {
+                min-height: 10px;
+                /* IE8 min-height hack */
+                height: auto !important;
+                height: 10px;
+            }
 
             ul.list li {
                 background-color: white;
@@ -146,6 +152,7 @@
                 });
 
                 // TODO: BL - header mucked up
+                // TODO: BL - cannot drag to empty list in Chrome
             });
         </script>
     </head>
