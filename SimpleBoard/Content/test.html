@@ -38,27 +38,21 @@
                 height: 43px;
             }
 
-            #body { padding: 11px 0px 0px 11px; }
-
-            ul {
-                list-style-type: none;
-            }
-
-            li {
-                list-style-type: none;
-            }
-
-            /* --- ListOfLists - layout for the vertical columns --- */
-
-            ul#listOfLists {
-                 min-width: 1200px;
+            #body {
+                min-width: 1200px;
                 /* IE8 min-width hack */
                 width: auto !important;
                 width: 1200px;
+                padding: 11px 0px 0px 11px;
             }
 
-            ul#listOfLists>li 
-            {
+            ul { list-style-type: none; }
+
+            li { list-style-type: none; }
+
+            /* --- ListOfLists - layout for the vertical columns --- */
+
+            div.list {
                 display: inline;
                 float: left;
                 width: 175px;
@@ -78,9 +72,7 @@
                 width: 175px;
             }
 
-            ul.list {
-                clear: both;
-            }
+            ul.list { clear: both; }
 
             ul.list li {
                 background-color: white;
@@ -173,53 +165,51 @@
 
         <div id="body">
             
-            <ul id="listOfLists">
-                <li>
-                    <div class="listHeader">In Analysis</div>
-                    <ul data-id="InAnalysis" class="list">
-                        <li data-id="100" data-position="0"><div>100 - Create Customer</div></li>
-                        <li data-id="101" data-position="10"><div>101 - Migrate Profile</div></li>
-                        <li data-id="102" data-position="20"><div>102 - Manual Invoice</div></li>
-                        <li data-id="103" data-position="30"><div>103 - Sales Tax</div></li>
-                        <li data-id="104" data-position="40"><div>104 - Single Payment</div></li>
-                    </ul>
-                    <div class="addNewStory">Add new story...</div>
-                </li>
-                <li>
-                    <div class="listHeader">Ready for Dev</div>
-                    <ul data-id="ReadyForDev" class="list">
-                        <li data-id="200" data-position="0"><div>200 - Add Broker</div></li>
-                        <li data-id="201" data-position="10"><div>201 - Migrate Customer</div></li>
-                        <li data-id="202" data-position="20"><div>202 - On-Peak / Off-Peak / Shoulder</div></li>
-                        <li data-id="203" data-position="30"><div>203 - Parse Usage Edi</div></li>
-                    </ul>
-                    <div class="addNewStory">Add new story...</div>
-                </li>
-                <li>
-                    <div class="listHeader">In Dev</div>
-                    <ul data-id="InDev" class="list">
-                    </ul>
-                    <div class="addNewStory">Add new story...</div>
-                </li>
-                <li>
-                    <div class="listHeader">Ready for Test</div>
-                    <ul data-id="ReadyForTest" class="list">
-                    </ul>
-                    <div class="addNewStory">Add new story...</div>
-                </li>
-                <li>
-                    <div class="listHeader">In Test</div>
-                    <ul data-id="InTest" class="list">
-                    </ul>
-                    <div class="addNewStory">Add new story...</div>
-                </li>
-                <li>
-                    <div class="listHeader">Done</div>
-                    <ul data-id="Done" class="list">
-                    </ul>
-                    <div class="addNewStory">Add new story...</div>
-                </li>
-            </ul>
+            <div class="list">
+                <div class="listHeader">In Analysis</div>
+                <ul data-id="InAnalysis" class="list">
+                    <li data-id="100" data-position="0"><div>100 - Create Customer</div></li>
+                    <li data-id="101" data-position="10"><div>101 - Migrate Profile</div></li>
+                    <li data-id="102" data-position="20"><div>102 - Manual Invoice</div></li>
+                    <li data-id="103" data-position="30"><div>103 - Sales Tax</div></li>
+                    <li data-id="104" data-position="40"><div>104 - Single Payment</div></li>
+                </ul>
+                <div class="addNewStory">Add new story...</div>
+            </div>
+            <div class="list">
+                <div class="listHeader">Ready for Dev</div>
+                <ul data-id="ReadyForDev" class="list">
+                    <li data-id="200" data-position="0"><div>200 - Add Broker</div></li>
+                    <li data-id="201" data-position="10"><div>201 - Migrate Customer</div></li>
+                    <li data-id="202" data-position="20"><div>202 - On-Peak / Off-Peak / Shoulder</div></li>
+                    <li data-id="203" data-position="30"><div>203 - Parse Usage Edi</div></li>
+                </ul>
+                <div class="addNewStory">Add new story...</div>
+            </div>
+            <div class="list">
+                <div class="listHeader">In Dev</div>
+                <ul data-id="InDev" class="list">
+                </ul>
+                <div class="addNewStory">Add new story...</div>
+            </div>
+            <div class="list">
+                <div class="listHeader">Ready for Test</div>
+                <ul data-id="ReadyForTest" class="list">
+                </ul>
+                <div class="addNewStory">Add new story...</div>
+            </div>
+            <div class="list">
+                <div class="listHeader">In Test</div>
+                <ul data-id="InTest" class="list">
+                </ul>
+                <div class="addNewStory">Add new story...</div>
+            </div>
+            <div class="list">
+                <div class="listHeader">Done</div>
+                <ul data-id="Done" class="list">
+                </ul>
+                <div class="addNewStory">Add new story...</div>
+            </div>
             
         </div>
 
