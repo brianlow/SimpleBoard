@@ -1,6 +1,129 @@
 ﻿@model dynamic
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Simple Story Board";
+}
+@section HeaderBottom
+{
+    <script src="@Url.Content("~/Scripts/live.js")" type="text/javascript"> </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".list ul").sortable({
+                connectWith: ".list ul",
+                distance: 15,
+                cancel: '.addNewStory',
+                stop: function (event, ui) {
+                    var current = $(ui.item.context);
+                    var previous = current.prev();
+                    var next = current.next();
+                    var newPosition = "0";
+                    if (previous.length === 0 && next.length === 0) {
+                        newPosition = "0";
+                    } else if (previous.length !== 0 && next.length === 0) {
+                        newPosition = parseFloat(previous.attr("data-position")) + 10;
+                    } else if (previous.length === 0 && next.length !== 0) {
+                        newPosition = parseFloat(next.attr("data-position")) - 10;
+                    } else {
+                        var previousPosition = parseFloat(previous.attr("data-position"));
+                        var nextPosition = parseFloat(next.attr("data-position"));
+                        newPosition = previousPosition + ((nextPosition - previousPosition) / 2);
+                    }
+
+                    current.attr("data-position", newPosition);
+                    // alert("Move Story " + current.attr("data-id") + " to position " + newPosition + " in list " + current.parent().attr("data-id"));
+                }
+            }).disableSelection();
+
+            $(".addNewStory").on("click", function (ui) {
+                var target = $(ui.target);
+                var ul = target.closest(".list").children("ul");
+                var newStoryName = prompt("New Story Name", "");
+                if (newStoryName === null || newStoryName === "") {
+                    return;
+                }
+                var newPosition = 0;
+                var lastLi = ul.children("li").last();
+                if (lastLi.length === 1) {
+                    newPosition = parseFloat(lastLi.attr("data-position")) + 10;
+                }
+                ul.append($("<li data-id='99' data-position='" + newPosition + "' class='story'><div>" + newStoryName + "</div></li>"));
+                // alert("Add new story '" + newStoryName + "' to list " + ul.attr("data-id") + " at position " + newPosition);
+                var addNewStoryMessage = {
+                    MessageId: newGuid(),
+                    MessageType: "AddNewStory",
+                    Name: newStoryName,
+                    ListId: ul.attr("data-id"),
+                    Position: newPosition
+                };
+                $.post("Home/SendMessage", { msg: JSON.stringify(addNewStoryMessage) }, function (result) {
+                });
+            });
+
+            $(".list ul").on("click", "li", function (ui) {
+                var li = $(ui.target).closest("li");
+                var divInsideLi = li.children("div");
+                var editedStoryName = prompt("Story Name", divInsideLi.text());
+                if (editedStoryName === null) {
+                    return;
+                }
+                if (editedStoryName === "") {
+                    li.closest(".story").remove();
+                    return;
+                }
+                divInsideLi.text(editedStoryName);
+            });
+        });
+    </script>
 }
 
-<h2>@ViewBag.Title</h2>
+<div id="mainmenu">
+    <div id="logo">
+        TRPS
+    </div>
+    <div id="title">
+        ITERATION 1 STORY BOARD
+    </div>
+</div>
+
+<div style="clear: both;"></div>
+
+<div id="body">
+            
+    <div class="list">
+        <div class="listHeader">In Analysis</div>
+        <ul data-id="InAnalysis">
+            <li data-id="100" data-position="0" class="story"><div>100 - Create Customer</div></li>
+        </ul>
+        <div class="addNewStory">Add new story...</div>
+    </div>
+    <div class="list">
+        <div class="listHeader">Ready for Dev</div>
+        <ul data-id="ReadyForDev">
+        </ul>
+        <div class="addNewStory">Add new story...</div>
+    </div>
+    <div class="list">
+        <div class="listHeader">In Dev</div>
+        <ul data-id="InDev">
+        </ul>
+        <div class="addNewStory">Add new story...</div>
+    </div>
+    <div class="list">
+        <div class="listHeader">Ready for Test</div>
+        <ul data-id="ReadyForTest">
+        </ul>
+        <div class="addNewStory">Add new story...</div>
+    </div>
+    <div class="list">
+        <div class="listHeader">In Test</div>
+        <ul data-id="InTest">
+        </ul>
+        <div class="addNewStory">Add new story...</div>
+    </div>
+    <div class="list">
+        <div class="listHeader">Done</div>
+        <ul data-id="Done">
+        </ul>
+        <div class="addNewStory">Add new story...</div>
+    </div>
+            
+</div>

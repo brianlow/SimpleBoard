@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleBoard", "SimpleBoard\SimpleBoard.csproj", "{1D8D2BAE-666D-40F8-91C2-6F84D91F2F31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleBoard", "src\SimpleBoard.csproj", "{1D8D2BAE-666D-40F8-91C2-6F84D91F2F31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

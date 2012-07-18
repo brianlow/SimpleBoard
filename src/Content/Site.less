@@ -1,0 +1,102 @@
+@lightGreen: #00A849;
+@darkGreen: #008037;
+@lightBlue: #006DAA;
+@listWidth: 175px;
+@numberOfLists: 7;
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Calibri, Arial;
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+
+#mainmenu {
+    background-color: @lightGreen;
+    min-width: 900px;
+    height: 43px;
+}
+
+#mainmenu #logo {
+    text-align: center;
+    float: left;
+    color: white;
+    font-size: 22pt;
+    width: 100px;
+    height: 43px;
+    padding: 0px 0px 0px 0px;
+    background-color: @darkGreen;
+    /* vertical alignment hack */
+    line-height: 40px;
+}
+
+#mainmenu #title {
+    float: left;
+    color: white;
+    width: 250px;
+    height: 43px;
+    padding-left: 15px;
+    /* vertical alignment hack */
+    line-height: 50px;
+}
+
+#body {
+    padding: 11px 0px 0px 11px;
+    min-width: @listWidth*@numberOfLists;
+}
+
+ul { list-style-type: none; }
+
+li { list-style-type: none; }
+
+/* --- layout for the vertical columns --- */
+
+.list {
+    display: inline-block;
+    float: left;
+    width: 175px;
+    margin-right: 5px;
+}
+
+/* --- individual list of stories (header, stories and "Add" link)  --- */
+
+.list .listHeader {
+    background-color: @lightBlue;
+    color: white;
+    height: 35px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    margin-bottom: 3px;
+    width: @listWidth;
+}
+
+.list ul { min-height: 10px; }
+
+.story {
+    background-color: white;
+    border: #dddddd solid 1px;
+    color: black;
+    min-height: 44px;
+    margin: 2px 0px 2px 0px;
+    cursor: pointer;
+    width: @listWidth;
+}
+
+.story div { padding: 3px 10px 3px 10px; }
+
+.list .addNewStory {
+    text-align: center;
+    color: #aaaaaa;
+    padding: 10px 0px 10px 0px;
+    margin-bottom: 35px;
+    cursor: pointer;
+    width: @listWidth;
+}
