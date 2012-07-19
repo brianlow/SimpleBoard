@@ -76,9 +76,35 @@
             $.connection.hub.logging = true;
             $.connection.hub.start()
                 .fail(function () { alert("Could not Connect!"); });
-            $.connection.storyBoardHub.sendToClient = function(msg) {
-                alert("From server: " + msg);
+            $.connection.storyBoardHub.sendToClient = function (data) {
+                var msgs = JSON.parse(data);
+                $.each(msgs.Messages, function (index, msg) {
+                    if (msg.MessageType === "AddNewStory") {
+
+                        var liForNewStory = $("<li data-id='" + msg.MessageId + "' data-position='" + msg.Position + "' class='story'><div>" + msg.Name + "</div></li>");
+
+                        var ul = $(".list ul[data-id='" + msg.ListId + "']");
+                        var li = findFirstLiWithPositionAfter(ul, parseFloat(msg.Position));
+                        if (li === null) {
+                            ul.append(liForNewStory);
+                        }
+                        else {
+                            li.before(liForNewStory);
+                        }
+                    }
+                });
             };
+
+            function findFirstLiWithPositionAfter(ul, targetPosition) {
+                var children = ul.children("li");
+                for (var i = 0; i < children.length; i++) {
+                    var liPosition = parseFloat($(children[i]).attr("data-position"));
+                    if (liPosition > targetPosition) {
+                        return $(children[i]);
+                    }
+                }
+                return null;
+            }
         });
     </script>
 }

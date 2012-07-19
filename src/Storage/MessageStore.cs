@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 
 namespace SimpleBoard.Storage
 {
@@ -13,7 +14,17 @@ namespace SimpleBoard.Storage
         public MessageStore(string name)
         {
             Name = name;
-            Filename = Path.Combine(".", name + ".json");
+            var appDataPath = GetAppDataFolder();
+            Filename = Path.Combine(appDataPath, name + ".json");
+        }
+
+        private static string GetAppDataFolder()
+        {
+            if (HttpContext.Current != null)
+            {
+                return HttpContext.Current.Server.MapPath("~/App_Data/");
+            }
+            return ".";
         }
 
         public void Add(string msg)
