@@ -16,7 +16,6 @@ namespace SimpleBoard.Storage
         public void TestInitialize()
         {
             _store = new MessageStore("UnitTestStore");
-            
         }
 
         [TestCleanup]
@@ -49,7 +48,6 @@ namespace SimpleBoard.Storage
                                                    "hello" + Environment.NewLine + "world",
                                                    "who's on " + Environment.NewLine + " first?"
                                                });
-
         }
     }
 }
