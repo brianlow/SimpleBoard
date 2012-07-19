@@ -4,3 +4,4 @@
 {"MessageId":"e2cb4b23-1004-4a03-88c9-e2757ea95dab","MessageType":"AddNewStory","Name":"aa","ListId":"InAnalysis","Position":40}
 {"MessageId":"9532eed0-7a00-4522-9bea-0613d894d21d","MessageType":"AddNewStory","Name":"222 - Story ready for test","ListId":"ReadyForTest","Position":0}
 {"MessageId":"665f27f2-b587-49b2-96e2-4b190691cd5a","MessageType":"AddNewStory","Name":"333 - Hello","ListId":"ReadyForTest","Position":10}
+{"MessageId":"653b7a17-a53c-4ad0-ba8a-820b5776edc7","MessageType":"AddNewStory","Name":"abcdef","ListId":"ReadyForDev","Position":0}

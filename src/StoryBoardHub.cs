@@ -12,7 +12,7 @@ namespace SimpleBoard
 
         public Task Connect()
         {
-            return Clients.sendToClient(ToJsonArray(_messageStore.GetAll()));
+            return Clients[Context.ConnectionId].sendToClient(ToJsonArray(_messageStore.GetAll()));
         }
 
         private string ToJsonArray(IEnumerable<string> msgs)
