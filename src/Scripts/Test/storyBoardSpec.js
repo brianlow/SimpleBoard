@@ -57,8 +57,6 @@ describe("StoryBoard", function () {
     });
     
     // TODO: BL - record time and user with message
-    // TODO: BL - pull resharper formatting from TRPS
     // TODO: BL - don't indent multi-line strings
     // TODO: BL - test outgoing message created
-
 });
