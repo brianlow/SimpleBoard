@@ -53,18 +53,18 @@
                 if (editedStoryName === null) {
                     return;
                 }
-                if (editedStoryName === "") {
-                    li.closest(".story").remove();
-                    return;
-                }
-                divInsideLi.text(editedStoryName);
+
+                var msg = createChangeStoryNameMessage(li, editedStoryName);
+
+                $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             });
 
             $.connection.hub.logging = true;
             $.connection.hub.start()
                 .fail(function () { alert("Could not Connect!"); });
             $.connection.storyBoardHub.sendToClient = function (data) {
-                processMessages(data, $("div#body"));
+                var msgs = JSON.parse(data);
+                processMessages(msgs, $("div#body"));
             };
         });
     </script>

@@ -1,16 +1,20 @@
 
+var processedMessages = { };
+
 //
 // Parse and process messages received from the server
 //
-function processMessages(msgsAsString, body) {
-    var msgs = JSON.parse(msgsAsString);
+function processMessages(msgs, body) {
     $.each(msgs.Messages, function (index, msg) {
 
+        if (processedMessages[msg.MessageId] === true)
+            return;
+
         if (msg.MessageType === "AddNewList") {
-            
+
             var divForNewList = "<div class='list'><div class='listHeader'>" + msg.Name + "</div><ul data-id='" + msg.ListId + "'></ul><div class='addNewStory'>Add new story...</div></div>";
             body.append(divForNewList);
-            
+
         }
         else if (msg.MessageType === "AddNewStory") {
 
@@ -23,7 +27,16 @@ function processMessages(msgsAsString, body) {
             } else {
                 li.before(liForNewStory);
             }
+
         }
+        else if (msg.MessageType === "ChangeStoryName") {
+
+            var divInsideLiForStory = body.find("li[data-id='" + msg.StoryId + "'] div")[0];
+            $(divInsideLiForStory).text(msg.Name);
+
+        }
+
+        processedMessages[msg.MessageId] = true;
     });
 }
 

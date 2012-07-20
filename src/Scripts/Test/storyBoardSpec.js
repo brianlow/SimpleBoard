@@ -8,6 +8,9 @@ describe("StoryBoard", function () {
                 return this.actual.length == 36 && this.actual.indexOf("-") > 0;
             }
         });
+
+        // clear list of processed messages
+        processedMessages = { };
     });
 
 
@@ -15,7 +18,7 @@ describe("StoryBoard", function () {
 
         it("should add a new list", function () {
             var body = $("<div></div>");
-            processMessages('{"Messages":[{"MessageId":"1","MessageType":"AddNewList","ListId":"InDev","Name":"In Development"}]}', body);
+            processMessages({ Messages: [{ MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development"}] }, body);
 
             expect(body.children().length).toEqual(1);
             expect(body.children()[0].innerHTML)
@@ -24,14 +27,27 @@ describe("StoryBoard", function () {
 
         it("should add several list", function () {
             var body = $("<div></div>");
-            processMessages(
-                '{"Messages":[' +
-                    '{"MessageId":"1","MessageType":"AddNewList","ListId":"InDev","Name":"In Development"},' +
-                        '{"MessageId":"2","MessageType":"AddNewList","ListId":"DevDone","Name":"Development Done"}]}', body);
+            processMessages({
+                Messages: [
+                    { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                    { MessageId: "2", MessageType: "AddNewList", ListId: "DevDone", Name: "Development Done"}]
+            }, body);
 
             expect(body.children().length).toEqual(2);
             expect(body.children()[0].innerHTML).toEqual('<div class="listHeader">In Development</div><ul data-id="InDev"></ul><div class="addNewStory">Add new story...</div>');
             expect(body.children()[1].innerHTML).toEqual('<div class="listHeader">Development Done</div><ul data-id="DevDone"></ul><div class="addNewStory">Add new story...</div>');
+        });
+
+        it("should not re-processe the same message twice", function () {
+            var body = $("<div></div>");
+            processMessages({
+                Messages: [
+                    { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                    { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development"}]
+            }, body);
+
+            expect(body.children().length).toEqual(1);
+            expect(body.children()[0].innerHTML).toEqual('<div class="listHeader">In Development</div><ul data-id="InDev"></ul><div class="addNewStory">Add new story...</div>');
         });
 
     });
@@ -41,10 +57,12 @@ describe("StoryBoard", function () {
         it("should add a new story", function () {
             var body = $("<div></div>");
             processMessages(
-                '{"Messages":[' +
-                    '{"MessageId":"1","MessageType":"AddNewList","ListId":"InDev","Name":"In Development"},' +
-                        '{"MessageId":"2","MessageType":"AddNewStory","StoryId":"55","ListId":"InDev","Name":"Create Customer","Position":"0"}' +
-                            ']}', body);
+                {
+                    Messages: [
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "0" }
+                    ]
+                }, body);
 
             expect(body.find("ul li").length).toEqual(1);
             expect(body.find("ul")[0].innerHTML)
@@ -54,11 +72,13 @@ describe("StoryBoard", function () {
         it("should add new story at top of list (based on position)", function () {
             var body = $("<div></div>");
             processMessages(
-                '{"Messages":[' +
-                    '{"MessageId":"1","MessageType":"AddNewList","ListId":"InDev","Name":"In Development"},' +
-                        '{"MessageId":"2","MessageType":"AddNewStory","StoryId":"55","ListId":"InDev","Name":"Create Customer","Position":"10"},' +
-                            '{"MessageId":"3","MessageType":"AddNewStory","StoryId":"56","ListId":"InDev","Name":"Create Invoice","Position":"5"}' +
-                                ']}', body);
+                {
+                    Messages: [
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "10" },
+                        { MessageId: "3", MessageType: "AddNewStory", StoryId: "56", ListId: "InDev", Name: "Create Invoice", Position: "5" }
+                    ]
+                }, body);
 
             expect(body.find("ul li").length).toEqual(2);
             expect(body.find("ul")[0].innerHTML)
@@ -70,12 +90,14 @@ describe("StoryBoard", function () {
         it("should add new story in middle of list (based on position)", function () {
             var body = $("<div></div>");
             processMessages(
-                '{"Messages":[' +
-                    '{"MessageId":"1","MessageType":"AddNewList","ListId":"InDev","Name":"In Development"},' +
-                        '{"MessageId":"2","MessageType":"AddNewStory","StoryId":"55","ListId":"InDev","Name":"Create Customer","Position":"10"},' +
-                            '{"MessageId":"3","MessageType":"AddNewStory","StoryId":"56","ListId":"InDev","Name":"Create Invoice","Position":"20"},' +
-                                '{"MessageId":"4","MessageType":"AddNewStory","StoryId":"57","ListId":"InDev","Name":"Create Account","Position":"15"}' +
-                                    ']}', body);
+                {
+                    Messages: [
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "10" },
+                        { MessageId: "3", MessageType: "AddNewStory", StoryId: "56", ListId: "InDev", Name: "Create Invoice", Position: "20" },
+                        { MessageId: "4", MessageType: "AddNewStory", StoryId: "57", ListId: "InDev", Name: "Create Account", Position: "15" }
+                    ]
+                }, body);
 
             expect(body.find("ul li").length).toEqual(3);
             expect(body.find("ul")[0].innerHTML)
@@ -88,13 +110,15 @@ describe("StoryBoard", function () {
         it("should add stories to different lists", function () {
             var body = $("<div></div>");
             processMessages(
-                '{"Messages":[' +
-                    '{"MessageId":"1","MessageType":"AddNewList","ListId":"InDev","Name":"In Development"},' +
-                        '{"MessageId":"2","MessageType":"AddNewList","ListId":"DevDone","Name":"Development Done"},' +
-                            '{"MessageId":"3","MessageType":"AddNewStory","StoryId":"55","ListId":"InDev","Name":"Create Customer","Position":"10"},' +
-                                '{"MessageId":"4","MessageType":"AddNewStory","StoryId":"56","ListId":"DevDone","Name":"Create Invoice","Position":"15"},' +
-                                    '{"MessageId":"5","MessageType":"AddNewStory","StoryId":"57","ListId":"InDev","Name":"Create Account","Position":"5"}' +
-                                        ']}', body);
+                {
+                    Messages: [
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewList", ListId: "DevDone", Name: "Development Done" },
+                        { MessageId: "3", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "10" },
+                        { MessageId: "4", MessageType: "AddNewStory", StoryId: "56", ListId: "DevDone", Name: "Create Invoice", Position: "15" },
+                        { MessageId: "5", MessageType: "AddNewStory", StoryId: "57", ListId: "InDev", Name: "Create Account", Position: "5" }
+                    ]
+                }, body);
 
             expect(body.find("ul li").length).toEqual(3);
             expect(body.find("ul")[0].innerHTML)
@@ -106,8 +130,30 @@ describe("StoryBoard", function () {
                     '<li data-id="56" data-position="15" class="story"><div>Create Invoice</div></li>');
         });
 
+        // TODO: BL - move story
+        // TODO: BL - delete story
         // TODO: BL - record time and user with message
-        // TODO: BL - test outgoing message created
+    });
+
+    describe("Processing a ChangeStoryNameMessage", function () {
+        it("should update the correct story name", function () {
+            var body = $("<div></div>");
+            processMessages(
+                {
+                    Messages: [
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "0" },
+                        { MessageId: "3", MessageType: "AddNewStory", StoryId: "56", ListId: "InDev", Name: "Create Invoice", Position: "10" },
+                        { MessageId: "4", MessageType: "AddNewStory", StoryId: "57", ListId: "InDev", Name: "Create Account", Position: "20" },
+                        { MessageId: "5", MessageType: "ChangeStoryName", StoryId: "56", ListId: "InDev", Name: "New Story Name" }
+                    ]
+                }, body);
+
+            expect(body.find("ul li").length).toEqual(3);
+            expect(body.find("ul li[data-id='55'] div")[0].innerHTML).toEqual("Create Customer");
+            expect(body.find("ul li[data-id='56'] div")[0].innerHTML).toEqual("New Story Name");
+            expect(body.find("ul li[data-id='57'] div")[0].innerHTML).toEqual("Create Account");
+        });
     });
 
     describe("Creating an AddNewStory message", function () {
@@ -146,13 +192,6 @@ describe("StoryBoard", function () {
             expect(msg.StoryId).toEqual("5");
             expect(msg.MessageType).toEqual("ChangeStoryName");
             expect(msg.Name).toEqual("New Story Name");
-        });
-    });
-
-    describe("Processing a ChangeStoryNameMessage", function () {
-        it("should update the correct story name", function() {
-            
-
         });
     });
 });
