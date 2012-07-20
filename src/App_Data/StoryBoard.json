@@ -1,7 +1,2 @@
-{"MessageId":"3a44b062-19c4-4d05-b565-3406ee192a3b","MessageType":"AddNewStory","Name":"a","ListId":"InAnalysis","Position":10}
-{"MessageId":"7a69f69e-73bd-4e4b-a4c0-27bf37023709","MessageType":"AddNewStory","Name":"bbb","ListId":"InAnalysis","Position":20}
-{"MessageId":"5741e1de-c296-4c51-80fa-8da448d4e7f7","MessageType":"AddNewStory","Name":"ss","ListId":"InAnalysis","Position":-5}
-{"MessageId":"e2cb4b23-1004-4a03-88c9-e2757ea95dab","MessageType":"AddNewStory","Name":"aa","ListId":"InAnalysis","Position":40}
-{"MessageId":"9532eed0-7a00-4522-9bea-0613d894d21d","MessageType":"AddNewStory","Name":"222 - Story ready for test","ListId":"ReadyForTest","Position":0}
-{"MessageId":"665f27f2-b587-49b2-96e2-4b190691cd5a","MessageType":"AddNewStory","Name":"333 - Hello","ListId":"ReadyForTest","Position":10}
-{"MessageId":"653b7a17-a53c-4ad0-ba8a-820b5776edc7","MessageType":"AddNewStory","Name":"abcdef","ListId":"ReadyForDev","Position":0}
+{"MessageId":"27d1d059-cd6d-480a-bc47-3087798059ed","MessageType":"AddNewStory","StoryId":"9ef88079-1e65-409b-a608-b0df5c3a4ca0","Name":"aaa","ListId":"InAnalysis","Position":10}
+{"MessageId":"5fee20e5-7daa-420a-b4a8-26e2ffa18391","MessageType":"AddNewStory","StoryId":"8801dc76-c46e-48ec-aa30-0ceb8b055593","Name":"bbb","ListId":"InAnalysis","Position":20}

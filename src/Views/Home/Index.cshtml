@@ -5,6 +5,7 @@
 @section HeaderBottom
 {
     <script src="@Url.Content("~/Scripts/live.js")" type="text/javascript"> </script>
+    <script src="@Url.Content("~/Scripts/storyBoard.js")" type="text/javascript"> </script>
     <script type="text/javascript">
         $(function () {
             $(".list ul").sortable({
@@ -50,6 +51,7 @@
                 var addNewStoryMessage = {
                     MessageId: newGuid(),
                     MessageType: "AddNewStory",
+                    StoryId: newGuid(),
                     Name: newStoryName,
                     ListId: ul.attr("data-id"),
                     Position: newPosition
@@ -77,34 +79,8 @@
             $.connection.hub.start()
                 .fail(function () { alert("Could not Connect!"); });
             $.connection.storyBoardHub.sendToClient = function (data) {
-                var msgs = JSON.parse(data);
-                $.each(msgs.Messages, function (index, msg) {
-                    if (msg.MessageType === "AddNewStory") {
-
-                        var liForNewStory = $("<li data-id='" + msg.MessageId + "' data-position='" + msg.Position + "' class='story'><div>" + msg.Name + "</div></li>");
-
-                        var ul = $(".list ul[data-id='" + msg.ListId + "']");
-                        var li = findFirstLiWithPositionAfter(ul, parseFloat(msg.Position));
-                        if (li === null) {
-                            ul.append(liForNewStory);
-                        }
-                        else {
-                            li.before(liForNewStory);
-                        }
-                    }
-                });
+                processMessages(data, $("div#body"));
             };
-
-            function findFirstLiWithPositionAfter(ul, targetPosition) {
-                var children = ul.children("li");
-                for (var i = 0; i < children.length; i++) {
-                    var liPosition = parseFloat($(children[i]).attr("data-position"));
-                    if (liPosition > targetPosition) {
-                        return $(children[i]);
-                    }
-                }
-                return null;
-            }
         });
     </script>
 }

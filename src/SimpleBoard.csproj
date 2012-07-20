@@ -158,6 +158,12 @@
     <Content Include="Scripts\less-1.3.0.min.js" />
     <Content Include="Scripts\live.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\storyBoard.js" />
+    <Content Include="Scripts\Test\lib\jasmine-1.2.0\jasmine-html.js" />
+    <Content Include="Scripts\Test\lib\jasmine-1.2.0\jasmine.css" />
+    <Content Include="Scripts\Test\lib\jasmine-1.2.0\jasmine.js" />
+    <Content Include="Scripts\Test\SpecRunner.html" />
+    <Content Include="Scripts\Test\storyBoardSpec.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,6 +185,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Scripts\Test\lib\jasmine-1.2.0\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
