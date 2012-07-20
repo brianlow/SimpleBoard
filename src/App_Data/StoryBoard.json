@@ -1,2 +1,4 @@
 {"MessageId":"27d1d059-cd6d-480a-bc47-3087798059ed","MessageType":"AddNewStory","StoryId":"9ef88079-1e65-409b-a608-b0df5c3a4ca0","Name":"aaa","ListId":"InAnalysis","Position":10}
 {"MessageId":"5fee20e5-7daa-420a-b4a8-26e2ffa18391","MessageType":"AddNewStory","StoryId":"8801dc76-c46e-48ec-aa30-0ceb8b055593","Name":"bbb","ListId":"InAnalysis","Position":20}
+{"MessageId":"3b29264a-6751-460a-8cff-4c94ebe003bc","MessageType":"AddNewStory","StoryId":"7c58fbf2-3183-44b2-b872-efe1b9e68742","Name":"ccc","ListId":"InAnalysis","Position":30}
+{"MessageId":"68e971f2-58dd-4511-a181-073d7cbcb76e","MessageType":"AddNewStory","StoryId":"119fc153-df3c-4d8a-8e54-2e330e22a932","Name":"ddd","ListId":"ReadyForDev","Position":0}

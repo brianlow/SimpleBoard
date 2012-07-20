@@ -37,3 +37,33 @@ function findFirstLiWithPositionAfter(ul, targetPosition) {
     }
     return null;
 }
+
+function createAddNewStoryMessage(ul, newStoryName) {
+    var newPosition = 0;
+    var lastLi = ul.children("li").last();
+    if (lastLi.length === 1) {
+        newPosition = parseFloat(lastLi.attr("data-position")) + 10;
+    }
+    ul.append($("<li data-id='99' data-position='" + newPosition + "' class='story'><div>" + newStoryName + "</div></li>"));
+    var addNewStoryMessage = {
+        MessageId: newGuid(),
+        MessageType: "AddNewStory",
+        StoryId: newGuid(),
+        Name: newStoryName,
+        ListId: ul.attr("data-id"),
+        Position: newPosition
+    };
+    return addNewStoryMessage;
+}
+
+function createChangeStoryNameMessage(li, newStoryName) {
+    var storyId = $(li).attr("data-id");
+    var changeStoryNameMessage = {
+        MessageId: newGuid(),
+        MessageType: "ChangeStoryName",
+        StoryId: storyId,
+        Name: newStoryName
+    };
+    return changeStoryNameMessage;
+
+}

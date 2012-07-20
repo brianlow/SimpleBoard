@@ -35,30 +35,15 @@
             }).disableSelection();
 
             $(".addNewStory").on("click", function (ui) {
-                var target = $(ui.target);
-                var ul = target.closest(".list").children("ul");
+                var ul = $(ui.target).closest(".list").children("ul");
                 var newStoryName = prompt("New Story Name", "");
                 if (newStoryName === null || newStoryName === "") {
                     return;
                 }
-                var newPosition = 0;
-                var lastLi = ul.children("li").last();
-                if (lastLi.length === 1) {
-                    newPosition = parseFloat(lastLi.attr("data-position")) + 10;
-                }
-                ul.append($("<li data-id='99' data-position='" + newPosition + "' class='story'><div>" + newStoryName + "</div></li>"));
-                // alert("Add new story '" + newStoryName + "' to list " + ul.attr("data-id") + " at position " + newPosition);
-                var addNewStoryMessage = {
-                    MessageId: newGuid(),
-                    MessageType: "AddNewStory",
-                    StoryId: newGuid(),
-                    Name: newStoryName,
-                    ListId: ul.attr("data-id"),
-                    Position: newPosition
-                };
-                //                $.post("Home/SendMessage", { msg: JSON.stringify(addNewStoryMessage) }, function (result) {
-                //                });
-                $.connection.storyBoardHub.sendToServer(JSON.stringify(addNewStoryMessage));
+
+                var msg = createAddNewStoryMessage(ul, newStoryName);
+
+                $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             });
 
             $(".list ul").on("click", "li", function (ui) {
