@@ -29,3 +29,8 @@
 {"MessageId":"32df0215-73d6-44f2-bd99-297846659fa6","MessageType":"AddNewStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"abc","ListId":"InAnalysis","Position":20}
 {"MessageId":"3dc031e1-a7ff-4467-b242-3e9182058ee1","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"aaa"}
 {"MessageId":"1ae43b58-e91b-4f00-957e-2a668effbcfd","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"dfdfsdf"}
+{"MessageId":"a84fe482-6143-40bb-9e8e-346344cf3ef0","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Account"}
+{"MessageId":"32e6e2dc-7dce-441c-b5de-8343779e671f","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"Manage Profiles"}
+{"MessageId":"2d3b1db1-62cb-49f9-8bcb-03f036290876","MessageType":"AddNewStory","StoryId":"2fbd8617-1fe9-422a-ba35-a9ebe03257df","Name":"Profile Invoice Generation and Deletion","ListId":"InAnalysis","Position":30}
+{"MessageId":"e1d4e0e8-99e5-4ea2-9262-f3928e76cfec","MessageType":"ChangeStoryName","StoryId":"eb717aa2-ccd5-4877-86a6-8d5e16a31fa8","Name":"Manual Invoice"}
+{"MessageId":"67d60e0f-987b-4718-8d9a-64953d7831bd","MessageType":"AddNewStory","StoryId":"27be388c-f900-43dd-8cc4-36eac0b59685","Name":"Account Migration","ListId":"ReadyForDev","Position":20}

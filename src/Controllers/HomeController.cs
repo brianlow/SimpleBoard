@@ -8,7 +8,7 @@ namespace SimpleBoard.Controllers
 {
     public class HomeController : Controller
     {
-        MessageStore _messageStore = new MessageStore("Main");
+        readonly MessageStore _messageStore = new MessageStore("Main");
 
         public ActionResult Index()
         {
