@@ -14,7 +14,7 @@ describe("StoryBoard", function () {
     });
 
 
-    describe("Processing AddNewLists messages", function () {
+    describe("When processing AddNewLists messages", function () {
 
         it("should add a new list", function () {
             var body = $("<div></div>");
@@ -25,7 +25,7 @@ describe("StoryBoard", function () {
                 .toEqual('<div class="listHeader">In Development</div><ul data-id="InDev"></ul><div class="addNewStory">Add new story...</div>');
         });
 
-        it("should add several list", function () {
+        it("should add several lists", function () {
             var body = $("<div></div>");
             processMessages({
                 Messages: [
@@ -38,7 +38,7 @@ describe("StoryBoard", function () {
             expect(body.children()[1].innerHTML).toEqual('<div class="listHeader">Development Done</div><ul data-id="DevDone"></ul><div class="addNewStory">Add new story...</div>');
         });
 
-        it("should not re-processe the same message twice", function () {
+        it("should not re-process the same message twice", function () {
             var body = $("<div></div>");
             processMessages({
                 Messages: [
@@ -52,7 +52,7 @@ describe("StoryBoard", function () {
 
     });
 
-    describe("Processing AddNewStory messages", function () {
+    describe("When processing AddNewStory messages", function () {
 
         it("should add a new story", function () {
             var body = $("<div></div>");
@@ -135,7 +135,7 @@ describe("StoryBoard", function () {
         // TODO: BL - record time and user with message
     });
 
-    describe("Processing a ChangeStoryNameMessage", function () {
+    describe("When processing a ChangeStoryNameMessage", function () {
         it("should update the correct story name", function () {
             var body = $("<div></div>");
             processMessages(
@@ -156,7 +156,7 @@ describe("StoryBoard", function () {
         });
     });
 
-    describe("Processing a RemoveStoryMessage", function() {
+    describe("When processing a RemoveStoryMessage", function() {
         it("should remove story", function () {
             var body = $("<div></div>");
             processMessages(
@@ -176,7 +176,7 @@ describe("StoryBoard", function () {
         });
     });
 
-    describe("Creating an AddNewStory message", function () {
+    describe("When creating an AddNewStory message", function () {
 
         it("should create message", function () {
             var ul = $("<ul data-id='InDev'></ul>");
@@ -201,7 +201,7 @@ describe("StoryBoard", function () {
         });
     });
 
-    describe("Creating a ChangeStoryNameMessage or RemoveStoryMessage", function () {
+    describe("When creating a ChangeStoryNameMessage or RemoveStoryMessage", function () {
 
         it("should create change message", function () {
             var li = $("<li data-id='5'><div>OldName</div></li>");
