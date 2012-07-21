@@ -54,7 +54,7 @@
                     return;
                 }
 
-                var msg = createChangeOrRemoveStoryMessage(li);
+                var msg = createChangeOrRemoveStoryMessage(li, newStoryName);
 
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             });

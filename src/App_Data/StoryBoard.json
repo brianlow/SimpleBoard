@@ -16,3 +16,16 @@
 {"MessageId":"3c12f726-9913-4b78-a58c-080fc3abd55c","MessageType":"RemoveStory","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9"}
 {"MessageId":"5b25a343-b4e3-4453-9b67-45ee8c08db3f","MessageType":"AddNewStory","StoryId":"97f1b868-d519-4510-bded-022f4c30f59b","Name":"aaa","ListId":"InAnalysis","Position":50}
 {"MessageId":"0a5babc1-6e61-4fb0-9328-846ae3b05ed6","MessageType":"RemoveStory","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1"}
+{"MessageId":"ef1bf1bb-b0d0-4e33-882c-928a4b6aac8f","MessageType":"RemoveStory","StoryId":"4f3abf22-4cb8-4e80-8403-ee047d456fc2"}
+{"MessageId":"bbd2fe28-cd40-4b6e-ab4f-80f63c39adcf","MessageType":"RemoveStory","StoryId":"97f1b868-d519-4510-bded-022f4c30f59b"}
+{"MessageId":"36dfb9ef-4c04-4398-80e8-e93cbf6bbbd4","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
+{"MessageId":"9a9d3ebb-dafc-464c-a7d7-f25fbb28e8fc","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
+{"MessageId":"da9e72d6-7768-49a3-aa93-eaeaa173a1fb","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
+{"MessageId":"4b839028-3ad7-42e6-9e28-24709f7402e9","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
+{"MessageId":"997d03c1-326e-412b-b2f4-100832932a87","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
+{"MessageId":"eceba6cf-452b-48d4-882e-29d2821b5444","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"bbb"}
+{"MessageId":"f3a93d7b-c5e9-47b4-8f7b-56ec4b64df03","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"aaaa"}
+{"MessageId":"f7d2370c-6f19-43d2-90b4-0694754ec4f5","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"hello there"}
+{"MessageId":"32df0215-73d6-44f2-bd99-297846659fa6","MessageType":"AddNewStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"abc","ListId":"InAnalysis","Position":20}
+{"MessageId":"3dc031e1-a7ff-4467-b242-3e9182058ee1","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"aaa"}
+{"MessageId":"1ae43b58-e91b-4f00-957e-2a668effbcfd","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"dfdfsdf"}

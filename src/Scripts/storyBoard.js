@@ -75,7 +75,7 @@ function createAddNewStoryMessage(ul, newStoryName) {
 function createChangeOrRemoveStoryMessage(li, newStoryName) {
     var storyId = $(li).attr("data-id");
 
-    if ($.trim(newStoryName) === "") {
+    if (newStoryName === "" || newStoryName === null) {
         var removeStoryMessage = {
             MessageId: newGuid(),
             MessageType: "RemoveStory",
