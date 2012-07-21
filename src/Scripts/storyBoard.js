@@ -4,6 +4,7 @@ var processedMessages = { };
 //
 // Parse and process messages received from the server
 //
+
 function processMessages(msgs, body) {
     $.each(msgs.Messages, function (index, msg) {
 
@@ -15,8 +16,7 @@ function processMessages(msgs, body) {
             var divForNewList = "<div class='list'><div class='listHeader'>" + msg.Name + "</div><ul data-id='" + msg.ListId + "'></ul><div class='addNewStory'>Add new story...</div></div>";
             body.append(divForNewList);
 
-        }
-        else if (msg.MessageType === "AddNewStory") {
+        } else if (msg.MessageType === "AddNewStory") {
 
             var liForNewStory = $("<li data-id='" + msg.StoryId + "' data-position='" + msg.Position + "' class='story'><div>" + msg.Name + "</div></li>");
 
@@ -28,11 +28,15 @@ function processMessages(msgs, body) {
                 li.before(liForNewStory);
             }
 
-        }
-        else if (msg.MessageType === "ChangeStoryName") {
+        } else if (msg.MessageType === "ChangeStoryName") {
 
             var divInsideLiForStory = body.find("li[data-id='" + msg.StoryId + "'] div")[0];
             $(divInsideLiForStory).text(msg.Name);
+
+        } else if (msg.MessageType == "RemoveStory") {
+
+            var liForStory = body.find("li[data-id='" + msg.StoryId + "']")[0];
+            $(liForStory).remove();
 
         }
 
@@ -57,7 +61,6 @@ function createAddNewStoryMessage(ul, newStoryName) {
     if (lastLi.length === 1) {
         newPosition = parseFloat(lastLi.attr("data-position")) + 10;
     }
-    ul.append($("<li data-id='99' data-position='" + newPosition + "' class='story'><div>" + newStoryName + "</div></li>"));
     var addNewStoryMessage = {
         MessageId: newGuid(),
         MessageType: "AddNewStory",
@@ -69,8 +72,18 @@ function createAddNewStoryMessage(ul, newStoryName) {
     return addNewStoryMessage;
 }
 
-function createChangeStoryNameMessage(li, newStoryName) {
+function createChangeOrRemoveStoryMessage(li, newStoryName) {
     var storyId = $(li).attr("data-id");
+
+    if ($.trim(newStoryName) === "") {
+        var removeStoryMessage = {
+            MessageId: newGuid(),
+            MessageType: "RemoveStory",
+            StoryId: storyId
+        };
+        return removeStoryMessage;
+    }
+    
     var changeStoryNameMessage = {
         MessageId: newGuid(),
         MessageType: "ChangeStoryName",
@@ -78,5 +91,4 @@ function createChangeStoryNameMessage(li, newStoryName) {
         Name: newStoryName
     };
     return changeStoryNameMessage;
-
 }

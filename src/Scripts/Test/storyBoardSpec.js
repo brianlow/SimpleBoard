@@ -10,7 +10,7 @@ describe("StoryBoard", function () {
         });
 
         // clear list of processed messages
-        processedMessages = { };
+        processedMessages = {};
     });
 
 
@@ -156,6 +156,26 @@ describe("StoryBoard", function () {
         });
     });
 
+    describe("Processing a RemoveStoryMessage", function() {
+        it("should remove story", function () {
+            var body = $("<div></div>");
+            processMessages(
+                {
+                    Messages: [
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "0" },
+                        { MessageId: "3", MessageType: "AddNewStory", StoryId: "56", ListId: "InDev", Name: "Create Invoice", Position: "10" },
+                        { MessageId: "4", MessageType: "AddNewStory", StoryId: "57", ListId: "InDev", Name: "Create Account", Position: "20" },
+                        { MessageId: "5", MessageType: "RemoveStory", StoryId: "56" }
+                    ]
+                }, body);
+
+            expect(body.find("ul li").length).toEqual(2);
+            expect(body.find("ul li[data-id='55'] div")[0].innerHTML).toEqual("Create Customer");
+            expect(body.find("ul li[data-id='57'] div")[0].innerHTML).toEqual("Create Account");
+        });
+    });
+
     describe("Creating an AddNewStory message", function () {
 
         it("should create message", function () {
@@ -181,17 +201,28 @@ describe("StoryBoard", function () {
         });
     });
 
-    describe("Creating a ChangeStoryNameMessage", function () {
+    describe("Creating a ChangeStoryNameMessage or RemoveStoryMessage", function () {
 
-        it("should create message", function () {
+        it("should create change message", function () {
             var li = $("<li data-id='5'><div>OldName</div></li>");
 
-            var msg = createChangeStoryNameMessage(li, "New Story Name");
+            var msg = createChangeOrRemoveStoryMessage(li, "New Story Name");
 
             expect(msg.MessageId).toBeAGuid();
-            expect(msg.StoryId).toEqual("5");
             expect(msg.MessageType).toEqual("ChangeStoryName");
+            expect(msg.StoryId).toEqual("5");
             expect(msg.Name).toEqual("New Story Name");
         });
+
+        it("should create remove message when new story name is blank", function () {
+            var li = $("<li data-id='5'><div>Create Customer</div></li>");
+
+            var msg = createChangeOrRemoveStoryMessage(li, "");
+
+            expect(msg.MessageId).toBeAGuid();
+            expect(msg.MessageType).toEqual("RemoveStory");
+            expect(msg.StoryId).toEqual("5");
+        });
     });
+
 });

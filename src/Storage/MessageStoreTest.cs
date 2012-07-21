@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -48,6 +46,16 @@ namespace SimpleBoard.Storage
                                                    "hello" + Environment.NewLine + "world",
                                                    "who's on " + Environment.NewLine + " first?"
                                                });
+        }
+
+        [TestMethod]
+        public void ShouldGetEmptyListOfFileDoesNotExist()
+        {
+            if (File.Exists(_store.Filename))
+            {
+                File.Delete(_store.Filename);
+            }
+            _store.GetAll().Should().BeEmpty();
         }
     }
 }

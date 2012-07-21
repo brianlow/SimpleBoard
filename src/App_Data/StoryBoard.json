@@ -1,4 +1,18 @@
-{"MessageId":"27d1d059-cd6d-480a-bc47-3087798059ed","MessageType":"AddNewStory","StoryId":"9ef88079-1e65-409b-a608-b0df5c3a4ca0","Name":"aaa","ListId":"InAnalysis","Position":10}
-{"MessageId":"5fee20e5-7daa-420a-b4a8-26e2ffa18391","MessageType":"AddNewStory","StoryId":"8801dc76-c46e-48ec-aa30-0ceb8b055593","Name":"bbb","ListId":"InAnalysis","Position":20}
-{"MessageId":"3b29264a-6751-460a-8cff-4c94ebe003bc","MessageType":"AddNewStory","StoryId":"7c58fbf2-3183-44b2-b872-efe1b9e68742","Name":"ccc","ListId":"InAnalysis","Position":30}
-{"MessageId":"68e971f2-58dd-4511-a181-073d7cbcb76e","MessageType":"AddNewStory","StoryId":"119fc153-df3c-4d8a-8e54-2e330e22a932","Name":"ddd","ListId":"ReadyForDev","Position":0}
+{"MessageId":"9f06e498-57e4-4bd8-874e-60cd8ed94394","MessageType":"AddNewStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"aaa","ListId":"InAnalysis","Position":10}
+{"MessageId":"885f0fee-689e-445a-a70e-ecc2f3ddce17","MessageType":"AddNewStory","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":"bbb","ListId":"InAnalysis","Position":20}
+{"MessageId":"360b746b-da26-4f9e-ad4b-f32f932a6a19","MessageType":"AddNewStory","StoryId":"8b5b161b-3031-49e5-a993-ad8a95049f1a","Name":"ccc","ListId":"InAnalysis","Position":30}
+{"MessageId":"6f349d10-4cf1-4d98-9750-4ad76a650eac","MessageType":"AddNewStory","StoryId":"4f3abf22-4cb8-4e80-8403-ee047d456fc2","Name":"abcdef","ListId":"InAnalysis","Position":40}
+{"MessageId":"811bb9d8-1abe-4359-be10-80bfbdd535ab","MessageType":"AddNewStory","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1","Name":"123","ListId":"ReadyForDev","Position":0}
+{"MessageId":"29f8c4a2-20bd-4d27-93aa-116154f364f0","MessageType":"AddNewStory","StoryId":"eb717aa2-ccd5-4877-86a6-8d5e16a31fa8","Name":"333","ListId":"ReadyForDev","Position":10}
+{"MessageId":"4093575d-3dc3-489e-8450-eb19ee066e25","MessageType":"ChangeStoryName","StoryId":"eb717aa2-ccd5-4877-86a6-8d5e16a31fa8","Name":"555"}
+{"MessageId":"5d13a2ea-1004-4b19-935b-19b3775c3282","MessageType":"ChangeStoryName","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1","Name":"a new title"}
+{"MessageId":"a660fbe8-3e60-421f-94bb-ea22a1cb161e","MessageType":"ChangeStoryName","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1","Name":"an old title"}
+{"MessageId":"4e16af53-757f-45a9-a511-499f159d9e32","MessageType":"ChangeStoryName","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":"sdflkjsdlfkjsdfkjsf"}
+{"MessageId":"f497b380-b286-42df-aa97-673a1f3210da","MessageType":"ChangeStoryName","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":""}
+{"MessageId":"11f66b61-9755-4318-a97c-5d23ac4adf94","MessageType":"ChangeStoryName","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":"sdsf"}
+{"MessageId":"6982a510-342e-4794-9c5f-7fe6ae0fd6b6","MessageType":"ChangeStoryName","StoryId":"4f3abf22-4cb8-4e80-8403-ee047d456fc2","Name":"123 4556 dslfkjsdl fj"}
+{"MessageId":"ea3e49ce-c57e-4e87-a048-1b8b83f328ce","MessageType":"ChangeStoryName","StoryId":"4f3abf22-4cb8-4e80-8403-ee047d456fc2","Name":"112            sdlfkj"}
+{"MessageId":"dd8bb9f0-70ec-4797-b744-632200d08d4d","MessageType":"RemoveStory","StoryId":"8b5b161b-3031-49e5-a993-ad8a95049f1a"}
+{"MessageId":"3c12f726-9913-4b78-a58c-080fc3abd55c","MessageType":"RemoveStory","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9"}
+{"MessageId":"5b25a343-b4e3-4453-9b67-45ee8c08db3f","MessageType":"AddNewStory","StoryId":"97f1b868-d519-4510-bded-022f4c30f59b","Name":"aaa","ListId":"InAnalysis","Position":50}
+{"MessageId":"0a5babc1-6e61-4fb0-9328-846ae3b05ed6","MessageType":"RemoveStory","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1"}

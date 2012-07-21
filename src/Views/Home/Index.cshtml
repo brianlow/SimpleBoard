@@ -42,19 +42,19 @@
                 }
 
                 var msg = createAddNewStoryMessage(ul, newStoryName);
-
+                
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             });
 
             $(".list ul").on("click", "li", function (ui) {
                 var li = $(ui.target).closest("li");
                 var divInsideLi = li.children("div");
-                var editedStoryName = prompt("Story Name", divInsideLi.text());
-                if (editedStoryName === null) {
+                var newStoryName = prompt("Story Name", divInsideLi.text());
+                if (newStoryName === null) {
                     return;
                 }
 
-                var msg = createChangeStoryNameMessage(li, editedStoryName);
+                var msg = createChangeOrRemoveStoryMessage(li);
 
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             });
@@ -76,6 +76,9 @@
     </div>
     <div id="title">
         ITERATION 1 STORY BOARD
+    </div>
+    <div id="working" style="display:none;">
+        <img src="@Url.Content("~/Content/working.gif")"/>
     </div>
 </div>
 

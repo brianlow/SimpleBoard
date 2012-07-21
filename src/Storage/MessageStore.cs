@@ -34,6 +34,10 @@ namespace SimpleBoard.Storage
 
         public IEnumerable<string> GetAll()
         {
+            if (!File.Exists(Filename))
+            {
+                return new string[] {};
+            }
             return File.ReadAllLines(Filename).Select(line => line.Replace(@"#NEWLINE#", Environment.NewLine));
         }
     }

@@ -15,15 +15,21 @@ namespace SimpleBoard
             return Clients[Context.ConnectionId].sendToClient(ToJsonArray(_messageStore.GetAll()));
         }
 
-        private string ToJsonArray(IEnumerable<string> msgs)
-        {
-            return "{\"Messages\":[" + string.Join(", " + Environment.NewLine, msgs) + "]}";
-        }
-
         public string SendToServer(string msg)
         {
             _messageStore.Add(msg);
+            Clients.sendToClient(ToJsonArray(msg));
             return "";
+        }
+
+        private string ToJsonArray(string msg)
+        {
+            return ToJsonArray(new[] {msg});
+        }
+
+        private string ToJsonArray(IEnumerable<string> msgs)
+        {
+            return "{\"Messages\":[" + string.Join(", " + Environment.NewLine, msgs) + "]}";
         }
 
         public Task Reconnect(IEnumerable<string> groups)
