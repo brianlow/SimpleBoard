@@ -34,3 +34,13 @@
 {"MessageId":"2d3b1db1-62cb-49f9-8bcb-03f036290876","MessageType":"AddNewStory","StoryId":"2fbd8617-1fe9-422a-ba35-a9ebe03257df","Name":"Profile Invoice Generation and Deletion","ListId":"InAnalysis","Position":30}
 {"MessageId":"e1d4e0e8-99e5-4ea2-9262-f3928e76cfec","MessageType":"ChangeStoryName","StoryId":"eb717aa2-ccd5-4877-86a6-8d5e16a31fa8","Name":"Manual Invoice"}
 {"MessageId":"67d60e0f-987b-4718-8d9a-64953d7831bd","MessageType":"AddNewStory","StoryId":"27be388c-f900-43dd-8cc4-36eac0b59685","Name":"Account Migration","ListId":"ReadyForDev","Position":20}
+{"MessageId":"e8c1cad2-3954-4212-b4f1-ac21d5de0ca4","MessageType":"ChangeStoryName","StoryId":"27be388c-f900-43dd-8cc4-36eac0b59685","Name":"Account and Utility Migration"}
+{"MessageId":"41d38c16-f58a-4ba8-a7e7-4d48fd3bc2b0","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":15}
+{"MessageId":"c6b5e572-0e01-4fa0-a07f-d76ce2948dc0","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InDev","NewPosition":"0"}
+{"MessageId":"1036eb45-97e8-4bbc-b768-15551f6947f0","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":30}
+{"MessageId":"3ebcaf94-6c41-4192-8071-8cf03d060d4d","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":40}
+{"MessageId":"671dc380-936e-4c4e-b333-e7afd2d67dca","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"ReadyForDev","NewPosition":30}
+{"MessageId":"4d24dbdb-2358-45ca-b29f-9d40e6052421","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"ReadyForTest","NewPosition":"0"}
+{"MessageId":"8bae822d-5bd8-4907-99f6-1aa9ea6287fd","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"InAnalysis","NewPosition":20}
+{"MessageId":"d66f161e-2b75-40a1-bff9-ae6612138388","MessageType":"MoveStory","StoryId":"2fbd8617-1fe9-422a-ba35-a9ebe03257df","NewListId":"ReadyForDev","NewPosition":0}
+{"MessageId":"5066b45f-e2ea-4111-bdc5-9b550a8a8b42","MessageType":"MoveStory","StoryId":"27be388c-f900-43dd-8cc4-36eac0b59685","NewListId":"InAnalysis","NewPosition":50}

@@ -13,24 +13,11 @@
                 distance: 15,
                 cancel: '.addNewStory',
                 stop: function (event, ui) {
-                    var current = $(ui.item.context);
-                    var previous = current.prev();
-                    var next = current.next();
-                    var newPosition = "0";
-                    if (previous.length === 0 && next.length === 0) {
-                        newPosition = "0";
-                    } else if (previous.length !== 0 && next.length === 0) {
-                        newPosition = parseFloat(previous.attr("data-position")) + 10;
-                    } else if (previous.length === 0 && next.length !== 0) {
-                        newPosition = parseFloat(next.attr("data-position")) - 10;
-                    } else {
-                        var previousPosition = parseFloat(previous.attr("data-position"));
-                        var nextPosition = parseFloat(next.attr("data-position"));
-                        newPosition = previousPosition + ((nextPosition - previousPosition) / 2);
-                    }
+                    var movedLi = $(ui.item.context);
+                    
+                    var msg = createMoveStoryMessage(movedLi);
 
-                    current.attr("data-position", newPosition);
-                    // alert("Move Story " + current.attr("data-id") + " to position " + newPosition + " in list " + current.parent().attr("data-id"));
+                    $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
                 }
             }).disableSelection();
 
@@ -42,7 +29,7 @@
                 }
 
                 var msg = createAddNewStoryMessage(ul, newStoryName);
-                
+
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             });
 
