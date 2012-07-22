@@ -34,7 +34,6 @@ function processMessages(msgs, body) {
             liForStory = $(body.find("li[data-id='" + msg.StoryId + "']")[0]);
             var divInsideLiForStory = liForStory.children("div")[0];
             $(divInsideLiForStory).text(msg.Name);
-            console.log(msg.MessageId + ": " + msg.Name);
             if (isBlocked(msg.Name)) {
                 $(liForStory).addClass("blocked");
             } else {
