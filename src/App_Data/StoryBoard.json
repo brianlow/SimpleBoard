@@ -50,3 +50,5 @@
 {"MessageId":"8bae822d-5bd8-4907-99f6-1aa9ea6287fd","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"InAnalysis","NewPosition":20}
 {"MessageId":"d66f161e-2b75-40a1-bff9-ae6612138388","MessageType":"MoveStory","StoryId":"2fbd8617-1fe9-422a-ba35-a9ebe03257df","NewListId":"ReadyForDev","NewPosition":0}
 {"MessageId":"5066b45f-e2ea-4111-bdc5-9b550a8a8b42","MessageType":"MoveStory","StoryId":"27be388c-f900-43dd-8cc4-36eac0b59685","NewListId":"InAnalysis","NewPosition":50}
+{"MessageId":"b9bad45a-dcc9-40af-af64-a915caae759c","MessageType":"ChangeStoryName","StoryId":"eb717aa2-ccd5-4877-86a6-8d5e16a31fa8","Name":"Manual Tax Adjustment Invoice"}
+{"MessageId":"17961f75-fd04-4bf3-97e1-d2114abd0ee7","MessageType":"AddNewStory","StoryId":"d99b691a-2342-4f8e-9dc3-b83dee6a5e94","Name":"Single Payment","ListId":"InAnalysis","Position":60}

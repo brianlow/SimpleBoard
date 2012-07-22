@@ -21,7 +21,7 @@
                 }
             }).disableSelection();
 
-            $(".addNewStory").on("click", function (ui) {
+            $(".addNewStory").live("click", function (ui) {
                 var ul = $(ui.target).closest(".list").children("ul");
                 var newStoryName = prompt("New Story Name", "");
                 if (newStoryName === null || newStoryName === "") {
@@ -33,7 +33,7 @@
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             });
 
-            $(".list ul").on("click", "li", function (ui) {
+            $(".list ul").live("click", "li", function (ui) {
                 var li = $(ui.target).closest("li");
                 var divInsideLi = li.children("div");
                 var newStoryName = prompt("Story Name", divInsideLi.text());
