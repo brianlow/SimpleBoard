@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace SimpleBoard.Storage
+namespace SimpleBoard.Domain
 {
     public class MessageStore
     {

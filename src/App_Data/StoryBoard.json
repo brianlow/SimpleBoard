@@ -192,3 +192,8 @@
 {"MessageId":"a185c9d2-f79e-4907-a9b8-1016711b54f9","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":29.140625}
 {"MessageId":"9721b397-e281-40ff-b0de-7cf2aea6776e","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer"}
 {"MessageId":"c95ad80e-2087-4bd4-b9f6-e5e3826848ad","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer (BLOCKED)"}
+{"MessageId":"433b11ec-458f-4144-b622-4715db89b32d","MessageType":"AddNewStory","StoryId":"1d7b4112-83e6-4f8f-8a5f-26380b4acec2","Name":"aaa","ListId":"InAnalysis","Position":51.875,"DateTime":"2012-07-22T15:54:10.0546356-06:00","User":"Win7TC\\Brian"}
+{"MessageId":"68076774-90b9-46ad-9dca-58d6549ce963","MessageType":"AddNewStory","StoryId":"638fb6bd-7ecc-4d1b-b898-73fc1fdf5d4b","Name":"bbb","ListId":"InAnalysis","Position":61.875,"DateTime":"2012-07-22T16:04:05.7147054-06:00","User":"Win7TC\\Brian"}
+{"MessageId":"70fc1753-3d4c-4a49-995c-139a82ed2033","MessageType":"RemoveStory","StoryId":"638fb6bd-7ecc-4d1b-b898-73fc1fdf5d4b","DateTime":"2012-07-22T16:11:17.7564168-06:00","User":"Win7TC\\Brian"}
+{"MessageId":"991bfc27-2c5f-4803-b3e2-405f103abedc","MessageType":"ChangeStoryName","StoryId":"1d7b4112-83e6-4f8f-8a5f-26380b4acec2","Name":"Do something","DateTime":"2012-07-22T16:11:22.7137003-06:00","User":"Win7TC\\Brian"}
+{"MessageId":"fccd7d16-096e-435f-baa4-9220916b95bb","MessageType":"RemoveStory","StoryId":"1d7b4112-83e6-4f8f-8a5f-26380b4acec2","DateTime":"2012-07-22T16:11:41.8327939-06:00","User":"Win7TC\\Brian"}

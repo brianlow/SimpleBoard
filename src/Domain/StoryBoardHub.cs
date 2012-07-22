@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using SignalR.Hubs;
-using SimpleBoard.Storage;
 
-namespace SimpleBoard
+namespace SimpleBoard.Domain
 {
     public class StoryBoardHub : Hub, IConnected
     {
@@ -17,9 +17,18 @@ namespace SimpleBoard
 
         public string SendToServer(string msg)
         {
+            msg = AddAuditingInformation(msg);
             _messageStore.Add(msg);
             Clients.sendToClient(ToJsonArray(msg));
             return "";
+        }
+
+        private string AddAuditingInformation(string msg)
+        {
+            var identity = WindowsIdentity.GetCurrent();
+            var user = identity != null ? identity.Name : "";
+            var auditor = new Auditor(DateTime.Now, user);
+            return auditor.AddAuditInformation(msg);
         }
 
         private string ToJsonArray(string msg)

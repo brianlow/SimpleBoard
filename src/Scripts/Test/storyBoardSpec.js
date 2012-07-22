@@ -125,10 +125,6 @@ describe("StoryBoard", function () {
                 .toEqual(
                     '<li data-id="56" data-position="15" class="story"><div>Create Invoice</div></li>');
         });
-
-        // TODO: BL - move story
-        // TODO: BL - delete story
-        // TODO: BL - record time and user with message
     });
 
     describe("When processing a ChangeStoryNameMessage", function () {

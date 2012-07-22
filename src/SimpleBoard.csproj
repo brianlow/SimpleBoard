@@ -80,13 +80,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="StoryBoardHub.cs" />
+    <Compile Include="Domain\Auditor.cs" />
+    <Compile Include="Domain\AuditorTest.cs" />
+    <Compile Include="Domain\StoryBoardHub.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\MessageStore.cs" />
-    <Compile Include="Storage\MessageStoreTest.cs" />
+    <Compile Include="Domain\MessageStore.cs" />
+    <Compile Include="Domain\MessageStoreTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\test.html" />
@@ -145,7 +147,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\working.gif" />
-    <Content Include="Content\working2.gif" />
     <Content Include="Global.asax" />
     <None Include="Content\Site.less" />
     <Content Include="Scripts\guid.js" />

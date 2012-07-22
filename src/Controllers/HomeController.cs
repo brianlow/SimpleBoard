@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using SimpleBoard.Storage;
+using SimpleBoard.Domain;
 
 namespace SimpleBoard.Controllers
 {

@@ -3,7 +3,7 @@ using System.IO;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SimpleBoard.Storage
+namespace SimpleBoard.Domain
 {
     [TestClass]
     public class MessageStoreTest
