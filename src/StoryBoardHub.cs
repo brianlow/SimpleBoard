@@ -18,6 +18,7 @@ namespace SimpleBoard
         public string SendToServer(string msg)
         {
             _messageStore.Add(msg);
+            System.Threading.Thread.Sleep(750);
             Clients.sendToClient(ToJsonArray(msg));
             return "";
         }

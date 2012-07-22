@@ -9,12 +9,27 @@
     <script type="text/javascript">
         $(function () {
 
+            function showWaitingIndicator() {
+                $("#working").attr("class", "visible");
+            }
+
+            function hideWaitingIndicator() {
+                $("#working").attr("class", "hidden");
+            }
+
+            var sendMessageToServer = function (msg) {
+                showWaitingIndicator();
+
+                $.connection.storyBoardHub.sendToServer(JSON.stringify(msg))
+                    .done(function () { hideWaitingIndicator(); });
+            };
+
             var storyWasMovedHandler = function (event, ui) {
                 var movedLi = $(ui.item.context);
-                    
+
                 var msg = createMoveStoryMessage(movedLi);
 
-                $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
+                sendMessageToServer(msg);
             };
 
             var addNewStoryHandler = function (ui) {
@@ -26,7 +41,7 @@
 
                 var msg = createAddNewStoryMessage(ul, newStoryName);
 
-                $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
+                sendMessageToServer(msg);
             };
 
             var changeStoryHandler = function (ui) {
@@ -39,14 +54,12 @@
 
                 var msg = createChangeOrRemoveStoryMessage(li, newStoryName);
 
-                $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
+                sendMessageToServer(msg);
             };
 
-            $(".addNewStory").live("click", addNewStoryHandler);
-            
-            $(".list ul").live("click", "li", changeStoryHandler);
+            var receiveMessagesFromServer = function (data) {
 
-            $.connection.storyBoardHub.sendToClient = function (data) {
+                showWaitingIndicator();
 
                 var msgs = JSON.parse(data);
 
@@ -58,8 +71,13 @@
                     cancel: '.addNewStory',
                     stop: storyWasMovedHandler
                 }).disableSelection();
+
+                hideWaitingIndicator();
             };
 
+            $(".addNewStory").live("click", addNewStoryHandler);
+            $(".list ul").live("click", "li", changeStoryHandler);
+            $.connection.storyBoardHub.sendToClient = receiveMessagesFromServer;
             $.connection.hub.start()
                 .fail(function () { alert("Could not Connect!"); });
         });
@@ -73,7 +91,7 @@
     <div id="title">
         ITERATION 1 STORY BOARD
     </div>
-    <div id="working" style="display:none;">
+    <div id="working">
         <img src="@Url.Content("~/Content/working.gif")"/>
     </div>
 </div>
