@@ -9,19 +9,19 @@
     <script type="text/javascript">
         $(function () {
 
-            function showWaitingIndicator() {
+            function showWorkingIndicator() {
                 $("#working").attr("class", "visible");
             }
 
-            function hideWaitingIndicator() {
+            function hideWorkingIndicator() {
                 $("#working").attr("class", "hidden");
             }
 
             var sendMessageToServer = function (msg) {
-                showWaitingIndicator();
+                showWorkingIndicator();
 
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg))
-                    .done(function () { hideWaitingIndicator(); });
+                    .done(function () { hideWorkingIndicator(); });
             };
 
             var storyWasMovedHandler = function (event, ui) {
@@ -56,24 +56,27 @@
 
                 sendMessageToServer(msg);
             };
-
             var receiveMessagesFromServer = function (data) {
 
-                showWaitingIndicator();
+                showWorkingIndicator();
 
                 var msgs = JSON.parse(data);
 
                 processMessages(msgs, $("div#body"));
 
+                makeListsSortable();
+                
+                hideWorkingIndicator();
+            };
+
+            function makeListsSortable() {
                 $(".list ul").sortable({
                     connectWith: ".list ul",
                     distance: 15,
                     cancel: '.addNewStory',
                     stop: storyWasMovedHandler
                 }).disableSelection();
-
-                hideWaitingIndicator();
-            };
+            }
 
             $(".addNewStory").live("click", addNewStoryHandler);
             $(".list ul").live("click", "li", changeStoryHandler);

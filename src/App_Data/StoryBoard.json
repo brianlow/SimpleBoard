@@ -84,3 +84,7 @@
 {"MessageId":"b2104681-33f7-416f-83a6-667b9d792cca","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"aaa"}
 {"MessageId":"39253250-dc41-4e41-a60f-d54eb83d1455","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"bbb"}
 {"MessageId":"2e8fdd7e-b500-456c-bf1a-b0589f3e85f8","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"ccc"}
+{"MessageId":"650e8048-59c7-4e02-addb-109542304e6c","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":21.25}
+{"MessageId":"3335835f-78e1-4cd8-afd4-406b10327619","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":"0"}
+{"MessageId":"4a5f9a41-e56b-4936-844c-fc77657ca604","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":21.25}
+{"MessageId":"90b01e3f-5c7b-48b9-8797-d241df60cf8f","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":"0"}
