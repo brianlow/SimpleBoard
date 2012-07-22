@@ -2,11 +2,12 @@ Simple Board
 ============
 trello but hosted locally and works in IE8
 
-Running Tests
--------------
-- Use Resharper to run all c# tests
-- Open src/Scripts/Test/SpecRunner.html, OR
-- Run the app and browse to http://localhost:1099/Scripts/Test/SpecRunner.html
+Tests
+-----
+* For C# unit tests, use Resharper
+* for Javascript tests:
+    * Run the app and browse to http://localhost:1099/Scripts/Test/SpecRunner.html, or
+    * Open file://SimpleBoard/src/Scripts/Test/SpecRunner.html in a browser (but live.js won't automatically reload)
 
 Storage
 -------
