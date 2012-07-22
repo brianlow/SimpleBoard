@@ -85,6 +85,7 @@
             showWorkingSpinner();
             $(".addNewStory").live("click", addNewStoryHandler);
             $(".list ul li").live("click", changeStoryHandler);
+            $.connection.hub.logging = true;
             $.connection.storyBoardHub.sendToClient = receiveMessagesFromServer;
             $.connection.hub.start()
                 .done(function () { hideWorkingSpinner(); })
