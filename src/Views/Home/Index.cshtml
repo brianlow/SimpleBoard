@@ -8,20 +8,16 @@
     <script src="@Url.Content("~/Scripts/storyBoard.js")" type="text/javascript"> </script>
     <script type="text/javascript">
         $(function () {
-            $(".list ul").sortable({
-                connectWith: ".list ul",
-                distance: 15,
-                cancel: '.addNewStory',
-                stop: function (event, ui) {
-                    var movedLi = $(ui.item.context);
+
+            var storyWasMovedHandler = function (event, ui) {
+                var movedLi = $(ui.item.context);
                     
-                    var msg = createMoveStoryMessage(movedLi);
+                var msg = createMoveStoryMessage(movedLi);
 
-                    $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
-                }
-            }).disableSelection();
+                $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
+            };
 
-            $(".addNewStory").live("click", function (ui) {
+            var addNewStoryHandler = function (ui) {
                 var ul = $(ui.target).closest(".list").children("ul");
                 var newStoryName = prompt("New Story Name", "");
                 if (newStoryName === null || newStoryName === "") {
@@ -31,12 +27,12 @@
                 var msg = createAddNewStoryMessage(ul, newStoryName);
 
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
-            });
+            };
 
-            $(".list ul").live("click", "li", function (ui) {
+            var changeStoryHandler = function (ui) {
                 var li = $(ui.target).closest("li");
-                var divInsideLi = li.children("div");
-                var newStoryName = prompt("Story Name", divInsideLi.text());
+                var currentStoryName = li.children("div").text();
+                var newStoryName = prompt("Story Name", currentStoryName);
                 if (newStoryName === null) {
                     return;
                 }
@@ -44,7 +40,18 @@
                 var msg = createChangeOrRemoveStoryMessage(li, newStoryName);
 
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
-            });
+            };
+
+            $(".list ul").sortable({
+                connectWith: ".list ul",
+                distance: 15,
+                cancel: '.addNewStory',
+                stop: storyWasMovedHandler
+            }).disableSelection();
+
+            $(".addNewStory").live("click", addNewStoryHandler);
+            
+            $(".list ul").live("click", "li", changeStoryHandler);
 
             $.connection.hub.logging = true;
             $.connection.hub.start()
