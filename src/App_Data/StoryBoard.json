@@ -14,7 +14,6 @@
 {"MessageId":"5d13a2ea-1004-4b19-935b-19b3775c3282","MessageType":"ChangeStoryName","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1","Name":"a new title"}
 {"MessageId":"a660fbe8-3e60-421f-94bb-ea22a1cb161e","MessageType":"ChangeStoryName","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1","Name":"an old title"}
 {"MessageId":"4e16af53-757f-45a9-a511-499f159d9e32","MessageType":"ChangeStoryName","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":"sdflkjsdlfkjsdfkjsf"}
-{"MessageId":"f497b380-b286-42df-aa97-673a1f3210da","MessageType":"ChangeStoryName","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":""}
 {"MessageId":"11f66b61-9755-4318-a97c-5d23ac4adf94","MessageType":"ChangeStoryName","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":"sdsf"}
 {"MessageId":"6982a510-342e-4794-9c5f-7fe6ae0fd6b6","MessageType":"ChangeStoryName","StoryId":"4f3abf22-4cb8-4e80-8403-ee047d456fc2","Name":"123 4556 dslfkjsdl fj"}
 {"MessageId":"ea3e49ce-c57e-4e87-a048-1b8b83f328ce","MessageType":"ChangeStoryName","StoryId":"4f3abf22-4cb8-4e80-8403-ee047d456fc2","Name":"112            sdlfkj"}
@@ -24,11 +23,6 @@
 {"MessageId":"0a5babc1-6e61-4fb0-9328-846ae3b05ed6","MessageType":"RemoveStory","StoryId":"cdd7eb8b-8f95-4883-a72f-65241361e4e1"}
 {"MessageId":"ef1bf1bb-b0d0-4e33-882c-928a4b6aac8f","MessageType":"RemoveStory","StoryId":"4f3abf22-4cb8-4e80-8403-ee047d456fc2"}
 {"MessageId":"bbd2fe28-cd40-4b6e-ab4f-80f63c39adcf","MessageType":"RemoveStory","StoryId":"97f1b868-d519-4510-bded-022f4c30f59b"}
-{"MessageId":"36dfb9ef-4c04-4398-80e8-e93cbf6bbbd4","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
-{"MessageId":"9a9d3ebb-dafc-464c-a7d7-f25fbb28e8fc","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
-{"MessageId":"da9e72d6-7768-49a3-aa93-eaeaa173a1fb","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
-{"MessageId":"4b839028-3ad7-42e6-9e28-24709f7402e9","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
-{"MessageId":"997d03c1-326e-412b-b2f4-100832932a87","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005"}
 {"MessageId":"eceba6cf-452b-48d4-882e-29d2821b5444","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"bbb"}
 {"MessageId":"f3a93d7b-c5e9-47b4-8f7b-56ec4b64df03","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"aaaa"}
 {"MessageId":"f7d2370c-6f19-43d2-90b4-0694754ec4f5","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"hello there"}
@@ -173,3 +167,28 @@
 {"MessageId":"06cc5395-0be7-4bc3-8877-1fc308593818","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"ggg"}
 {"MessageId":"14fba196-7e55-4c7a-a77b-a83bdfab06ce","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer"}
 {"MessageId":"79c62822-42ad-4759-bd21-de5e7ff9f6c0","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer(s)"}
+{"MessageId":"3c6dac4c-6c59-463d-b952-a5d0ca35c490","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer (blocked)"}
+{"MessageId":"bfdfd3ed-276d-49bf-9254-782014ee391c","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"ReadyForDev","NewPosition":10}
+{"MessageId":"89c33d7a-0c23-48cb-ae0d-a9518e60423c","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"InDev","NewPosition":-10}
+{"MessageId":"735517d9-62ae-43b5-af2c-20400bd0defb","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"ReadyForTest","NewPosition":"0"}
+{"MessageId":"7d240799-bbeb-49d1-a0a0-e80d545876cc","MessageType":"MoveStory","StoryId":"2fbd8617-1fe9-422a-ba35-a9ebe03257df","NewListId":"InTest","NewPosition":"0"}
+{"MessageId":"5fd3f334-f2eb-48a1-a982-34a10f4f84ac","MessageType":"MoveStory","StoryId":"2fbd8617-1fe9-422a-ba35-a9ebe03257df","NewListId":"Done","NewPosition":"0"}
+{"MessageId":"d5181618-23db-433e-a854-720a88491058","MessageType":"ChangeStoryName","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"Manage Profile"}
+{"MessageId":"a33265af-121f-4117-ac0d-7535291359de","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InDev","NewPosition":"0"}
+{"MessageId":"4ee44b54-7eb6-42f5-a679-68a946e95b49","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":"0"}
+{"MessageId":"ff9f0f37-7863-4a4d-8684-1323ca6c72fe","MessageType":"MoveStory","StoryId":"eb717aa2-ccd5-4877-86a6-8d5e16a31fa8","NewListId":"ReadyForDev","NewPosition":-10}
+{"MessageId":"eb938d0c-2147-4660-9a2e-9afa4b889a44","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":20.9375}
+{"MessageId":"757cb171-b958-48b3-982a-1d713766ee83","MessageType":"MoveStory","StoryId":"eb717aa2-ccd5-4877-86a6-8d5e16a31fa8","NewListId":"InAnalysis","NewPosition":26.40625}
+{"MessageId":"5c75200c-23f1-4ab9-aaf3-c5a66cf5c40d","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"InDev","NewPosition":"0"}
+{"MessageId":"54e3a162-8ee6-4ae1-bb30-edf5fcf9e355","MessageType":"MoveStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","NewListId":"ReadyForDev","NewPosition":"0"}
+{"MessageId":"2ff00409-bc05-4c50-b164-7bc5a08d306a","MessageType":"AddNewStory","StoryId":"e197c139-cb0b-4ac5-9ea6-98cde8433f2f","Name":"aaa (Blocked)","ListId":"InAnalysis","Position":41.875}
+{"MessageId":"87b0de6f-dd60-4356-beb7-8b1bf28ae809","MessageType":"ChangeStoryName","StoryId":"e197c139-cb0b-4ac5-9ea6-98cde8433f2f","Name":"aaa"}
+{"MessageId":"de4fdd51-d6e7-485f-a8a1-a2cb2dbdab03","MessageType":"ChangeStoryName","StoryId":"e197c139-cb0b-4ac5-9ea6-98cde8433f2f","Name":"aaa (Blocked)"}
+{"MessageId":"aaa83c70-878f-4373-8f4c-dea486b79c58","MessageType":"RemoveStory","StoryId":"e197c139-cb0b-4ac5-9ea6-98cde8433f2f"}
+{"MessageId":"38f87904-b89a-4871-b2ab-66be31b9577c","MessageType":"AddNewStory","StoryId":"b3703733-a217-4551-bfcf-18a25325d1ce","Name":"Win the lottery (Blocked)","ListId":"InAnalysis","Position":41.875}
+{"MessageId":"05ed3766-029c-4977-b97b-15cc1faa9878","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer"}
+{"MessageId":"28d1206a-41ec-4504-9c48-0f33976d4eeb","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InDev","NewPosition":"0"}
+{"MessageId":"f8ee7d91-061b-4d65-a3fc-5ef5dfdff406","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer (BLOCKED)"}
+{"MessageId":"a185c9d2-f79e-4907-a9b8-1016711b54f9","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":29.140625}
+{"MessageId":"9721b397-e281-40ff-b0de-7cf2aea6776e","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer"}
+{"MessageId":"c95ad80e-2087-4bd4-b9f6-e5e3826848ad","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Create Customer (BLOCKED)"}

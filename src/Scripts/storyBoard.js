@@ -18,7 +18,8 @@ function processMessages(msgs, body) {
 
         } else if (msg.MessageType === "AddNewStory") {
 
-            var liForNewStory = $("<li data-id='" + msg.StoryId + "' data-position='" + msg.Position + "' class='story'><div>" + msg.Name + "</div></li>");
+            var blockedClass = isBlocked(msg.Name) ? " blocked" : "";
+            var liForNewStory = $("<li data-id='" + msg.StoryId + "' data-position='" + msg.Position + "' class='story" + blockedClass + "'><div>" + msg.Name + "</div></li>");
 
             var ul = body.find(".list ul[data-id='" + msg.ListId + "']");
             var li = findFirstLiWithPositionAfter(ul, parseFloat(msg.Position));
@@ -30,8 +31,15 @@ function processMessages(msgs, body) {
 
         } else if (msg.MessageType === "ChangeStoryName") {
 
-            var divInsideLiForStory = body.find("li[data-id='" + msg.StoryId + "'] div")[0];
+            liForStory = $(body.find("li[data-id='" + msg.StoryId + "']")[0]);
+            var divInsideLiForStory = liForStory.children("div")[0];
             $(divInsideLiForStory).text(msg.Name);
+            console.log(msg.MessageId + ": " + msg.Name);
+            if (isBlocked(msg.Name)) {
+                $(liForStory).addClass("blocked");
+            } else {
+                $(liForStory).removeClass("blocked");
+            }
 
         } else if (msg.MessageType === "RemoveStory") {
 
@@ -53,6 +61,10 @@ function processMessages(msgs, body) {
 
         processedMessages[msg.MessageId] = true;
     });
+}
+
+function isBlocked(storyName) {
+    return (storyName.toLowerCase().indexOf("blocked") >= 0);
 }
 
 function findFirstLiWithPositionAfter(ul, targetPosition) {
