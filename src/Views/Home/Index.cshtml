@@ -42,24 +42,26 @@
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg));
             };
 
-            $(".list ul").sortable({
-                connectWith: ".list ul",
-                distance: 15,
-                cancel: '.addNewStory',
-                stop: storyWasMovedHandler
-            }).disableSelection();
-
             $(".addNewStory").live("click", addNewStoryHandler);
             
             $(".list ul").live("click", "li", changeStoryHandler);
 
-            $.connection.hub.logging = true;
+            $.connection.storyBoardHub.sendToClient = function (data) {
+
+                var msgs = JSON.parse(data);
+
+                processMessages(msgs, $("div#body"));
+
+                $(".list ul").sortable({
+                    connectWith: ".list ul",
+                    distance: 15,
+                    cancel: '.addNewStory',
+                    stop: storyWasMovedHandler
+                }).disableSelection();
+            };
+
             $.connection.hub.start()
                 .fail(function () { alert("Could not Connect!"); });
-            $.connection.storyBoardHub.sendToClient = function (data) {
-                var msgs = JSON.parse(data);
-                processMessages(msgs, $("div#body"));
-            };
         });
     </script>
 }
