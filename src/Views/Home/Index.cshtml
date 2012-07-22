@@ -87,7 +87,7 @@
             }
 
             $(".addNewStory").live("click", addNewStoryHandler);
-            $(".list ul").live("click", "li", changeStoryHandler);
+            $(".list ul li").live("click", changeStoryHandler);
             $.connection.storyBoardHub.sendToClient = receiveMessagesFromServer;
             $.connection.hub.start()
                 .fail(function () { alert("Could not Connect!"); });

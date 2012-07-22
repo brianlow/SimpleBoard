@@ -98,3 +98,5 @@
 {"MessageId":"4218dd1c-394c-46e4-8359-affaa7029b7f","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"def"}
 {"MessageId":"7726d855-cf88-4120-8a9c-8ae79e2e9dbd","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":21.25}
 {"MessageId":"41c7d3f9-da58-44d1-9add-395cd54e2f34","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":"0"}
+{"MessageId":"3c3e1b4d-5aa5-4ee4-ba19-59d4b6d1009c","MessageType":"ChangeStoryName","Name":"kh"}
+{"MessageId":"1b9ee4cf-70de-4e26-abe3-f77beea3f736","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"ggg"}
