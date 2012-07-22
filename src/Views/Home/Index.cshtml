@@ -9,12 +9,12 @@
     <script type="text/javascript">
         $(function () {
 
-            function showWorkingIndicator() {
-                $("#working").attr("class", "visible");
+            function showWorkingSpinner() {
+                $("#workingSpinner").stop().clearQueue().delay(750).fadeIn();
             }
 
-            function hideWorkingIndicator() {
-                $("#working").attr("class", "hidden");
+            function hideWorkingSpinner() {
+                $("#workingSpinner").stop().clearQueue().fadeOut();
             }
 
             function getBody() {
@@ -23,12 +23,12 @@
 
             var sendMessageToServer = function (msg) {
 
-                showWorkingIndicator();
+                showWorkingSpinner();
 
                 processMessages([msg], getBody());
 
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg))
-                    .done(function () { hideWorkingIndicator(); });
+                    .done(function () { hideWorkingSpinner(); });
             };
 
             var storyWasMovedHandler = function (event, ui) {
@@ -66,15 +66,11 @@
 
             var receiveMessagesFromServer = function (data) {
 
-                showWorkingIndicator();
-
                 var msgs = JSON.parse(data).Messages;
 
                 processMessages(msgs, getBody());
 
                 makeListsSortable();
-
-                //hideWorkingIndicator();
             };
 
             function makeListsSortable() {
@@ -86,10 +82,12 @@
                 }).disableSelection();
             }
 
+            showWorkingSpinner();
             $(".addNewStory").live("click", addNewStoryHandler);
             $(".list ul li").live("click", changeStoryHandler);
             $.connection.storyBoardHub.sendToClient = receiveMessagesFromServer;
             $.connection.hub.start()
+                .done(function () { hideWorkingSpinner(); })
                 .fail(function () { alert("Could not Connect!"); });
         });
     </script>
@@ -102,13 +100,10 @@
     <div id="title">
         ITERATION 1 STORY BOARD
     </div>
-    <div id="working">
-        <img src="@Url.Content("~/Content/working.gif")"/>
-    </div>
+    <img id="workingSpinner" src="@Url.Content("~/Content/working.gif")" style="float:right;padding: 4px 7px 0 0;"/>
 </div>
-
-<div style="clear: both;"></div>
 
 <div id="body">
             
 </div>
+
