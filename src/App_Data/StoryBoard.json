@@ -1,3 +1,9 @@
+{"MessageId":"F1CEF29C-B19C-49AF-B289-50709F3F9D8D","MessageType":"AddNewList","ListId":"InAnalysis","Name":"In Analysis"}
+{"MessageId":"E0F78D74-FD82-40AC-A184-E9F99BD5782C","MessageType":"AddNewList","ListId":"ReadyForDev","Name":"Ready For Dev"}
+{"MessageId":"D55F9BFD-D482-473C-A834-9A3AB7695016","MessageType":"AddNewList","ListId":"InDev","Name":"In Dev"}
+{"MessageId":"76929C0B-6D35-4A6D-BD7F-11FCDC5BDDAF","MessageType":"AddNewList","ListId":"ReadyForTest","Name":"Ready For Test"}
+{"MessageId":"8775629D-9219-40A6-A86A-82FBCD86B7BF","MessageType":"AddNewList","ListId":"InTest","Name":"In Test"}
+{"MessageId":"73310048-3AB4-4427-AF81-39103A4E0B77","MessageType":"AddNewList","ListId":"Done","Name":"Done"}
 {"MessageId":"9f06e498-57e4-4bd8-874e-60cd8ed94394","MessageType":"AddNewStory","StoryId":"9733d488-8515-4430-aa5c-f5bccec56005","Name":"aaa","ListId":"InAnalysis","Position":10}
 {"MessageId":"885f0fee-689e-445a-a70e-ecc2f3ddce17","MessageType":"AddNewStory","StoryId":"3d435038-9622-432f-98a6-2688fe843ed9","Name":"bbb","ListId":"InAnalysis","Position":20}
 {"MessageId":"360b746b-da26-4f9e-ad4b-f32f932a6a19","MessageType":"AddNewStory","StoryId":"8b5b161b-3031-49e5-a993-ad8a95049f1a","Name":"ccc","ListId":"InAnalysis","Position":30}
