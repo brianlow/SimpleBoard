@@ -6,7 +6,7 @@ var processedMessages = { };
 //
 
 function processMessages(msgs, body) {
-    $.each(msgs.Messages, function (index, msg) {
+    $.each(msgs, function (index, msg) {
 
         if (processedMessages[msg.MessageId] === true)
             return;

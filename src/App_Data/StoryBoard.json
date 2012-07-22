@@ -88,3 +88,13 @@
 {"MessageId":"3335835f-78e1-4cd8-afd4-406b10327619","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":"0"}
 {"MessageId":"4a5f9a41-e56b-4936-844c-fc77657ca604","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":21.25}
 {"MessageId":"90b01e3f-5c7b-48b9-8797-d241df60cf8f","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":"0"}
+{"MessageId":"0bd34978-6e15-42e7-9b5d-b2473039e9b5","MessageType":"MoveStory","StoryId":"d99b691a-2342-4f8e-9dc3-b83dee6a5e94","NewListId":"InAnalysis","NewPosition":31.875}
+{"MessageId":"deae095a-975f-423e-b64a-6a1a8b49393c","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"abc"}
+{"MessageId":"fccbe66c-eadd-44e1-a924-26dfba1a9d8d","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"bbb"}
+{"MessageId":"ea2edbe4-43d2-49e5-bcf9-142927a21b84","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"abcdef"}
+{"MessageId":"c3bcf332-2f61-47a6-b1b0-e7c299e6a9f0","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"Do Something"}
+{"MessageId":"c3671e2e-6ef9-4fbe-b425-a52259e839ae","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"something"}
+{"MessageId":"3a22c40c-5c82-4567-8406-fd2a2edbf941","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"abd"}
+{"MessageId":"4218dd1c-394c-46e4-8359-affaa7029b7f","MessageType":"ChangeStoryName","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","Name":"def"}
+{"MessageId":"7726d855-cf88-4120-8a9c-8ae79e2e9dbd","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"InAnalysis","NewPosition":21.25}
+{"MessageId":"41c7d3f9-da58-44d1-9add-395cd54e2f34","MessageType":"MoveStory","StoryId":"0788c7bb-be8a-4722-ba5c-c62029d395b8","NewListId":"ReadyForDev","NewPosition":"0"}

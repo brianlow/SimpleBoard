@@ -17,8 +17,15 @@
                 $("#working").attr("class", "hidden");
             }
 
+            function getBody() {
+                return $("div#body");
+            }
+
             var sendMessageToServer = function (msg) {
+
                 showWorkingIndicator();
+
+                processMessages([msg], getBody());
 
                 $.connection.storyBoardHub.sendToServer(JSON.stringify(msg))
                     .done(function () { hideWorkingIndicator(); });
@@ -56,17 +63,18 @@
 
                 sendMessageToServer(msg);
             };
+
             var receiveMessagesFromServer = function (data) {
 
                 showWorkingIndicator();
 
-                var msgs = JSON.parse(data);
+                var msgs = JSON.parse(data).Messages;
 
-                processMessages(msgs, $("div#body"));
+                processMessages(msgs, getBody());
 
                 makeListsSortable();
-                
-                hideWorkingIndicator();
+
+                //hideWorkingIndicator();
             };
 
             function makeListsSortable() {
