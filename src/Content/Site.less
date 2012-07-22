@@ -3,6 +3,7 @@
 @lightBlue: #006DAA;
 @listWidth: 175px;
 @numberOfLists: 7;
+@lightPink: #FFE4E8;
 
 * {
     margin: 0px;
@@ -92,6 +93,11 @@ li { list-style-type: none; }
 }
 
 .story div { padding: 3px 10px 3px 10px; }
+
+.blocked {
+	background-color: @lightPink;
+	border-color: darken(@lightPink, 10%);
+}
 
 .list .addNewStory {
     text-align: center;
