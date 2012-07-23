@@ -1,9 +1,10 @@
 @lightGreen: #00A849;
 @darkGreen: #008037;
-@lightBlue: #006DAA;
+@mediumBlue: #006DAA;
 @listWidth: 175px;
 @numberOfLists: 8;
-@lightPink: #FFE4E8;
+@lightPink: darken(#FFE4E8, 2%);
+@lightBlue: darken(#E7EFFF, 5%);
 
 * {
     margin: 0px;
@@ -70,7 +71,7 @@ li { list-style-type: none; }
 /* --- individual list of stories (header, stories and "Add" link)  --- */
 
 .list .listHeader {
-    background-color: @lightBlue;
+    background-color: @mediumBlue;
     color: white;
     height: 35px;
     text-align: center;
@@ -97,6 +98,11 @@ li { list-style-type: none; }
 .blocked {
 	background-color: @lightPink;
 	border-color: darken(@lightPink, 10%);
+}
+
+.bug {
+	background-color: @lightBlue;
+	border-color: darken(@lightBlue, 10%);
 }
 
 .list .addNewStory {

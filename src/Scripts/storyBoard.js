@@ -19,7 +19,8 @@ function processMessages(msgs, body) {
         } else if (msg.MessageType === "AddNewStory") {
 
             var blockedClass = isBlocked(msg.Name) ? " blocked" : "";
-            var liForNewStory = $("<li data-id='" + msg.StoryId + "' data-position='" + msg.Position + "' class='story" + blockedClass + "'><div>" + msg.Name + "</div></li>");
+            var bugClass = isBug(msg.Name) ? " bug" : "";
+            var liForNewStory = $("<li data-id='" + msg.StoryId + "' data-position='" + msg.Position + "' class='story" + blockedClass + bugClass + "'><div>" + msg.Name + "</div></li>");
 
             var ul = body.find(".list ul[data-id='" + msg.ListId + "']");
             var li = findFirstLiWithPositionAfter(ul, parseFloat(msg.Position));
@@ -34,11 +35,8 @@ function processMessages(msgs, body) {
             liForStory = $(body.find("li[data-id='" + msg.StoryId + "']")[0]);
             var divInsideLiForStory = liForStory.children("div")[0];
             $(divInsideLiForStory).text(msg.Name);
-            if (isBlocked(msg.Name)) {
-                $(liForStory).addClass("blocked");
-            } else {
-                $(liForStory).removeClass("blocked");
-            }
+            $(liForStory).toggleClass("blocked", isBlocked(msg.Name));
+            $(liForStory).toggleClass("bug", isBug(msg.Name));
 
         } else if (msg.MessageType === "RemoveStory") {
 
@@ -66,6 +64,10 @@ function isBlocked(storyName) {
     return (storyName.toLowerCase().indexOf("blocked") >= 0);
 }
 
+function isBug(storyName) {
+    return (storyName.toLowerCase().indexOf("bug") >= 0);
+}
+
 function findFirstLiWithPositionAfter(ul, targetPosition) {
     var children = ul.children("li");
     for (var i = 0; i < children.length; i++) {
@@ -87,7 +89,7 @@ function createAddNewStoryMessage(ul, newStoryName) {
         MessageId: newGuid(),
         MessageType: "AddNewStory",
         StoryId: newGuid(),
-        Name: newStoryName,
+        Name: $.trim(newStoryName),
         ListId: ul.attr("data-id"),
         Position: newPosition
     };
@@ -97,6 +99,7 @@ function createAddNewStoryMessage(ul, newStoryName) {
 function createChangeOrRemoveStoryMessage(li, newStoryName) {
     var storyId = $(li).attr("data-id");
 
+    newStoryName = $.trim(newStoryName);
     if (newStoryName === "" || newStoryName === null) {
         var removeStoryMessage = {
             MessageId: newGuid(),

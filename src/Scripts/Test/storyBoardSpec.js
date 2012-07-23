@@ -74,6 +74,18 @@ describe("StoryBoard", function () {
                 .toEqual('<li data-id="55" data-position="0" class="story blocked"><div>Create Customer (Blocked)</div></li>');
         });
 
+        it("should add css class if the story contains the word 'bug'", function () {
+            var body = $("<div></div>");
+            processMessages([
+                    { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                    { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer (Bug)", Position: "0" }
+                ], body);
+
+            expect(body.find("ul li").length).toEqual(1);
+            expect(body.find("ul")[0].innerHTML)
+                .toEqual('<li data-id="55" data-position="0" class="story bug"><div>Create Customer (Bug)</div></li>');
+        });
+
         it("should add new story at top of list (based on position)", function () {
             var body = $("<div></div>");
             processMessages([
@@ -165,6 +177,35 @@ describe("StoryBoard", function () {
                         { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
                         { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "0" },
                         { MessageId: "3", MessageType: "ChangeStoryName", StoryId: "55", ListId: "InDev", Name: "Create Customer (Blocked)" },
+                        { MessageId: "4", MessageType: "ChangeStoryName", StoryId: "55", ListId: "InDev", Name: "Create Customer" }
+                    ], body);
+
+        expect(body.find("ul li").length).toEqual(1);
+        expect(body.find("ul")[0].innerHTML)
+                .toEqual(
+                    '<li data-id="55" data-position="0" class="story"><div>Create Customer</div></li>');
+    });
+
+    it("should add the blocked css style when the new story name contains the word 'bug'", function () {
+        var body = $("<div></div>");
+        processMessages([
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "0" },
+                        { MessageId: "5", MessageType: "ChangeStoryName", StoryId: "55", ListId: "InDev", Name: "Create Customer (Bug)" }
+                    ], body);
+
+        expect(body.find("ul li").length).toEqual(1);
+        expect(body.find("ul")[0].innerHTML)
+                .toEqual(
+                    '<li data-id="55" data-position="0" class="story bug"><div>Create Customer (Bug)</div></li>');
+    });
+
+    it("should remove the blocked css style when the new story name does not contain the word 'bug'", function () {
+        var body = $("<div></div>");
+        processMessages([
+                        { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                        { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer", Position: "0" },
+                        { MessageId: "3", MessageType: "ChangeStoryName", StoryId: "55", ListId: "InDev", Name: "Create Customer (Bug)" },
                         { MessageId: "4", MessageType: "ChangeStoryName", StoryId: "55", ListId: "InDev", Name: "Create Customer" }
                     ], body);
 
