@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SimpleBoard.Domain;
 
 namespace SimpleBoard.Controllers
 {
     public class HomeController : Controller
     {
-        readonly MessageStore _messageStore = new MessageStore("Main");
+        private readonly MessageStore _messageStore = new MessageStore("Main");
 
         public ActionResult Index()
         {
+            ViewBag.IsDebug = (Request.Url.Host == "localhost" && Request.Url.Port == 1099);
             return View();
         }
 
