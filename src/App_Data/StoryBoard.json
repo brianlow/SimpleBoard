@@ -280,3 +280,5 @@
 {"MessageId":"71eb5c06-a89e-45b0-a5a7-bfccc0f83da2","MessageType":"RemoveStory","StoryId":"6bce02f2-0bf0-4752-b573-26fdba7ca13d","DateTime":"2012-07-23T10:59:12.123797-06:00","User":"TCPL\\brian_low"}
 {"MessageId":"407a5ac3-0b61-40e4-b01b-31e6702d055f","MessageType":"ChangeStoryName","StoryId":"ad23b4c2-8935-4a94-a481-187cad158da4","Name":"BUG: Something isn't working","DateTime":"2012-07-23T10:59:15.593797-06:00","User":"TCPL\\brian_low"}
 {"MessageId":"2920793b-806a-4984-a40c-85c70dda866c","MessageType":"ChangeStoryName","StoryId":"ad23b4c2-8935-4a94-a481-187cad158da4","Name":"Something isn't working (Bug)","DateTime":"2012-07-23T10:59:25.725397-06:00","User":"TCPL\\brian_low"}
+{"MessageId":"de91ca05-b651-4235-a5d2-e47409124da9","MessageType":"AddNewStory","StoryId":"62246baf-f3bc-4af2-9796-9dcf6bc8e036","Name":"aaa","ListId":"InAnalysis","Position":51.875,"DateTime":"2012-07-23T11:40:07.511797-06:00","User":"TCPL\\brian_low"}
+{"MessageId":"ce6cfe6a-4c4d-4daa-b5ab-11a6b08652fa","MessageType":"RemoveStory","StoryId":"62246baf-f3bc-4af2-9796-9dcf6bc8e036","DateTime":"2012-07-23T11:40:09.134797-06:00","User":"TCPL\\brian_low"}

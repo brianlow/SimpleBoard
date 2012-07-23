@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Web;
 using SignalR.Hubs;
 
 namespace SimpleBoard.Domain
@@ -25,8 +25,7 @@ namespace SimpleBoard.Domain
 
         private string AddAuditingInformation(string msg)
         {
-            var identity = WindowsIdentity.GetCurrent();
-            var user = identity != null ? identity.Name : "";
+            var user = HttpContext.Current.User.Identity.Name;
             var auditor = new Auditor(DateTime.Now, user);
             return auditor.AddAuditInformation(msg);
         }
