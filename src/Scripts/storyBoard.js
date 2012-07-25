@@ -20,14 +20,14 @@ function processMessages(msgs, body) {
 
             var blockedClass = isBlocked(msg.Name) ? " blocked" : "";
             var bugClass = isBug(msg.Name) ? " bug" : "";
-            var liForNewStory = $("<li data-id='" + msg.StoryId + "' data-position='" + msg.Position + "' class='story" + blockedClass + bugClass + "'><div>" + msg.Name + "</div></li>");
+            var liForNewStory = $("<li data-id='" + msg.StoryId + "' class='story" + blockedClass + bugClass + "'><div>" + msg.Name + "</div></li>");
 
             var ul = body.find(".list ul[data-id='" + msg.ListId + "']");
-            var li = findFirstLiWithPositionAfter(ul, parseFloat(msg.Position));
-            if (li === null) {
+            var liAtTargetPosition = ul.children("li")[msg.Position-1];
+            if (liAtTargetPosition === null || liAtTargetPosition === undefined) {
                 ul.append(liForNewStory);
             } else {
-                li.before(liForNewStory);
+                $(liAtTargetPosition).before(liForNewStory);
             }
 
         } else if (msg.MessageType === "ChangeStoryName") {
@@ -47,13 +47,12 @@ function processMessages(msgs, body) {
 
             liForStory = $(body.find("li[data-id='" + msg.StoryId + "']")[0]).detach();
             var ul = $(body.find("ul[data-id='" + msg.NewListId + "']")[0]);
-            var firstLiAfter = findFirstLiWithPositionAfter(ul, parseFloat(msg.NewPosition));
-            if (firstLiAfter === null) {
+            liAtTargetPosition = ul.children("li")[msg.NewPosition - 1];
+            if (liAtTargetPosition === null || liAtTargetPosition === undefined) {
                 ul.append(liForStory);
             } else {
-                firstLiAfter.before(liForStory);
+                $(liAtTargetPosition).before(liForStory);
             }
-            liForStory.attr("data-position", msg.NewPosition);
         }
 
         processedMessages[msg.MessageId] = true;
@@ -68,23 +67,8 @@ function isBug(storyName) {
     return (storyName.toLowerCase().indexOf("bug") >= 0);
 }
 
-function findFirstLiWithPositionAfter(ul, targetPosition) {
-    var children = ul.children("li");
-    for (var i = 0; i < children.length; i++) {
-        var liPosition = parseFloat($(children[i]).attr("data-position"));
-        if (liPosition > targetPosition) {
-            return $(children[i]);
-        }
-    }
-    return null;
-}
-
 function createAddNewStoryMessage(ul, newStoryName) {
-    var newPosition = 0;
-    var lastLi = ul.children("li").last();
-    if (lastLi.length === 1) {
-        newPosition = parseFloat(lastLi.attr("data-position")) + 10;
-    }
+    var newPosition = ul.children("li").length + 1;
     var addNewStoryMessage = {
         MessageId: newGuid(),
         MessageType: "AddNewStory",
@@ -120,29 +104,15 @@ function createChangeOrRemoveStoryMessage(li, newStoryName) {
 
 function createMoveStoryMessage(movedLi) {
     movedLi = $(movedLi);
-    var storyAbove = movedLi.prev();
-    var storyBelow = movedLi.next();
-    var newPosition = "0";
-    var isEmptyList = storyAbove.length === 0 && storyBelow.length === 0;
-    var isAtBottomOfList = storyAbove.length !== 0 && storyBelow.length === 0;
-    var isAtTopOfList = storyAbove.length === 0 && storyBelow.length !== 0;
-    if (isEmptyList) {
-        newPosition = "0";
-    } else if (isAtBottomOfList) {
-        newPosition = parseFloat(storyAbove.attr("data-position")) + 10;
-    } else if (isAtTopOfList) {
-        newPosition = parseFloat(storyBelow.attr("data-position")) - 10;
-    } else {
-        var previousPosition = parseFloat(storyAbove.attr("data-position"));
-        var nextPosition = parseFloat(storyBelow.attr("data-position"));
-        newPosition = previousPosition + ((nextPosition - previousPosition) / 2);
-    }
+    var ul = $(movedLi.closest("ul")[0]);
+    var newPosition = ul.children("li").index(movedLi) || 0;
+    newPosition = newPosition + 1;
 
     var moveStoryMessage = {
         MessageId: newGuid(),
         MessageType: "MoveStory",
         StoryId: movedLi.attr("data-id"),
-        NewListId: movedLi.closest("ul").attr("data-id"),
+        NewListId: ul.attr("data-id"),
         NewPosition: newPosition
     };
     return moveStoryMessage;
