@@ -20,10 +20,11 @@ function processMessages(msgs, body) {
 
             var blockedClass = isBlocked(msg.Name) ? " blocked" : "";
             var bugClass = isBug(msg.Name) ? " bug" : "";
-            var liForNewStory = $("<li data-id='" + msg.StoryId + "' class='story" + blockedClass + bugClass + "'><div>" + msg.Name + "</div></li>");
+            var storyName = colorStoryName(msg.Name);
+            var liForNewStory = $("<li data-id='" + msg.StoryId + "' class='story" + blockedClass + bugClass + "'><div>" + storyName + "</div></li>");
 
             var ul = body.find(".list ul[data-id='" + msg.ListId + "']");
-            var liAtTargetPosition = ul.children("li")[msg.Position-1];
+            var liAtTargetPosition = ul.children("li")[msg.Position - 1];
             if (liAtTargetPosition === null || liAtTargetPosition === undefined) {
                 ul.append(liForNewStory);
             } else {
@@ -34,7 +35,8 @@ function processMessages(msgs, body) {
 
             liForStory = $(body.find("li[data-id='" + msg.StoryId + "']")[0]);
             var divInsideLiForStory = liForStory.children("div")[0];
-            $(divInsideLiForStory).text(msg.Name);
+            storyName = colorStoryName(msg.Name);
+            $(divInsideLiForStory).html(storyName);
             $(liForStory).toggleClass("blocked", isBlocked(msg.Name));
             $(liForStory).toggleClass("bug", isBug(msg.Name));
 
@@ -66,6 +68,22 @@ function isBlocked(storyName) {
 function isBug(storyName) {
     return (storyName.toLowerCase().indexOf("bug") >= 0);
 }
+
+function colorStoryName(storyName) {
+    if (storyName.indexOf('(') >= 0 && storyName.indexOf(')' > 0)) {
+        storyName = storyName.insert(storyName.indexOf('('), '<div class="notes">');
+        storyName = storyName.insert(storyName.lastIndexOf(')') + 1, '</div>');
+    }
+
+    var regEx = new RegExp("#[0-9]{1,5}", "g");
+    storyName = storyName.replace(regEx, '<span class="storyNumber">$&</span>');
+    
+    return storyName;
+}
+
+String.prototype.insert = function (indexToInsertAt, stringToInsert) {
+    return this.substr(0, indexToInsertAt) + stringToInsert + this.substr(indexToInsertAt);
+};
 
 function createAddNewStoryMessage(ul, newStoryName) {
     var newPosition = ul.children("li").length + 1;
