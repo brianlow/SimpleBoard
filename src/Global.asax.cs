@@ -35,20 +35,8 @@ namespace SimpleBoard
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-
-            new LogEvent("Starting...").Raise();
-            var messageStore = new MessageStore("StoryBoard");
-            var messages = messageStore.GetAll();
-            new LogEvent("Found " + messages.Count() + " messages").Raise();
-            if (!messages.Any())
-            {
-                new LogEvent("Adding messages..").Raise();
-                var initialMessagesFile = EmbeddedResource.Get("InitialMessages.json");
-                var initialMessages = initialMessagesFile.Split(new[] {"\r\n", "\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
-                new LogEvent("Adding " + initialMessages.Count() + "messages..").Raise();
-                initialMessages.ForEach(messageStore.Add);
-            }
-            new LogEvent("Done starting").Raise();
+            
+            AddSomeInitialMessagesIfMessageStoreIsEmpty();
 
 //            if (bool.Parse(ConfigurationManager.AppSettings["AppHarbor"]))
 //            {
@@ -59,11 +47,15 @@ namespace SimpleBoard
 //            }
         }
 
-        public class LogEvent : WebRequestErrorEvent
+        private static void AddSomeInitialMessagesIfMessageStoreIsEmpty()
         {
-            public LogEvent(string message)
-                : base(null, null, 100001, new Exception(message))
+            var messageStore = new MessageStore("StoryBoard");
+            var messages = messageStore.GetAll();
+            if (!messages.Any())
             {
+                var initialMessagesFile = EmbeddedResource.Get("InitialMessages.json");
+                var initialMessages = initialMessagesFile.Split(new[] {"\r\n", "\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                initialMessages.ForEach(messageStore.Add);
             }
         }
     }
