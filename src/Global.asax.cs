@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -34,6 +36,14 @@ namespace SimpleBoard
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+//            if (bool.Parse(ConfigurationManager.AppSettings["AppHarbor"]))
+//            {
+//                var config = WebConfigurationManager.OpenWebConfiguration("~");
+//                var authorization = (AuthenticationSection) config.GetSection("system.web/authorization");
+//                authorization.Mode = AuthenticationMode.None;
+//                config.Save();
+//            }
         }
     }
 }
