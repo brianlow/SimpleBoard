@@ -44,7 +44,7 @@ namespace SimpleBoard
             {
                 new LogEvent("Adding messages..").Raise();
                 var initialMessagesFile = EmbeddedResource.Get("InitialMessages.json");
-                var initialMessages = initialMessagesFile.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                var initialMessages = initialMessagesFile.Split(new[] {"\r\n", "\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
                 new LogEvent("Adding " + initialMessages.Count() + "messages..").Raise();
                 initialMessages.ForEach(messageStore.Add);
             }
