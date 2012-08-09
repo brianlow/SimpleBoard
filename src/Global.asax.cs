@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
-using System.Web;
-using System.Web.Configuration;
+using System.Web.Management;
 using System.Web.Mvc;
 using System.Web.Routing;
 using SimpleBoard.Domain;
@@ -28,8 +25,8 @@ namespace SimpleBoard
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+                new {controller = "Home", action = "Index", id = UrlParameter.Optional} // Parameter defaults
+                );
         }
 
         protected void Application_Start()
@@ -39,14 +36,19 @@ namespace SimpleBoard
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
+            new LogEvent("Starting...").Raise();
             var messageStore = new MessageStore("StoryBoard");
             var messages = messageStore.GetAll();
+            new LogEvent("Found " + messages.Count() + " messages").Raise();
             if (!messages.Any())
             {
+                new LogEvent("Adding messages..").Raise();
                 var initialMessagesFile = EmbeddedResource.Get("InitialMessages.json");
                 var initialMessages = initialMessagesFile.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                new LogEvent("Adding " + initialMessages.Count() + "messages..").Raise();
                 initialMessages.ForEach(messageStore.Add);
             }
+            new LogEvent("Done starting").Raise();
 
 //            if (bool.Parse(ConfigurationManager.AppSettings["AppHarbor"]))
 //            {
@@ -55,6 +57,14 @@ namespace SimpleBoard
 //                authorization.Mode = AuthenticationMode.None;
 //                config.Save();
 //            }
+        }
+
+        public class LogEvent : WebRequestErrorEvent
+        {
+            public LogEvent(string message)
+                : base(null, null, 100001, new Exception(message))
+            {
+            }
         }
     }
 }
