@@ -36,19 +36,19 @@ namespace SimpleBoard
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            new LogEvent("Starting...").Raise();
+//            new LogEvent("Starting...").Raise();
             var messageStore = new MessageStore("StoryBoard");
             var messages = messageStore.GetAll();
-            new LogEvent("Found " + messages.Count() + " messages").Raise();
+//            new LogEvent("Found " + messages.Count() + " messages").Raise();
             if (!messages.Any())
             {
-                new LogEvent("Adding messages..").Raise();
+//                new LogEvent("Adding messages..").Raise();
                 var initialMessagesFile = EmbeddedResource.Get("InitialMessages.json");
-                var initialMessages = initialMessagesFile.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
-                new LogEvent("Adding " + initialMessages.Count() + "messages..").Raise();
+                var initialMessages = initialMessagesFile.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
+//                new LogEvent("Adding " + initialMessages.Count() + "messages..").Raise();
                 initialMessages.ForEach(messageStore.Add);
             }
-            new LogEvent("Done starting").Raise();
+//            new LogEvent("Done starting").Raise();
 
 //            if (bool.Parse(ConfigurationManager.AppSettings["AppHarbor"]))
 //            {
