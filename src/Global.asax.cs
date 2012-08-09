@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SimpleBoard.Domain;
+using SimpleBoard.Utils;
 
 namespace SimpleBoard
 {
@@ -36,6 +38,15 @@ namespace SimpleBoard
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            var messageStore = new MessageStore("StoryBoard");
+            var messages = messageStore.GetAll();
+            if (!messages.Any())
+            {
+                var initialMessagesFile = EmbeddedResource.Get("InitialMessages.json");
+                var initialMessages = initialMessagesFile.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                initialMessages.ForEach(messageStore.Add);
+            }
 
 //            if (bool.Parse(ConfigurationManager.AppSettings["AppHarbor"]))
 //            {
