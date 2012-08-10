@@ -70,7 +70,9 @@ function isBug(storyName) {
 }
 
 function colorStoryName(storyName) {
-    if (storyName.indexOf('(') >= 0 && storyName.indexOf(')' > 0)) {
+    var openingIndex = storyName.indexOf('(');
+    var closingIndex = storyName.indexOf(')');
+    if (openingIndex >= 0 && closingIndex > openingIndex) {
         storyName = storyName.insert(storyName.indexOf('('), '<div class="notes">');
         storyName = storyName.insert(storyName.lastIndexOf(')') + 1, '</div>');
     }

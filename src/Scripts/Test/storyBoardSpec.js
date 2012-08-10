@@ -74,6 +74,18 @@ describe("", function() {
                 .toEqual('<li data-id="55" class="story"><div>Create Customer <div class="notes">(2pts, Ash, I5)</div></div></li>');
         });
 
+        it("should not color text missing closing parenthesis", function() {
+            var body = $("<div></div>");
+            processMessages([
+                    { MessageId: "1", MessageType: "AddNewList", ListId: "InDev", Name: "In Development" },
+                    { MessageId: "2", MessageType: "AddNewStory", StoryId: "55", ListId: "InDev", Name: "Create Customer (2pts, Ash, I5", Position: "1" }
+                ], body);
+
+            expect(body.find("ul li").length).toEqual(1);
+            expect(body.find("ul")[0].innerHTML)
+                .toEqual('<li data-id="55" class="story"><div>Create Customer (2pts, Ash, I5</div></li>');
+        });
+
         it("should color story numbers differently", function() {
             var body = $("<div></div>");
             processMessages([
