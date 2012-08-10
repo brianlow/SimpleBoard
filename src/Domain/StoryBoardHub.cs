@@ -12,6 +12,16 @@ namespace SimpleBoard.Domain
 
         public Task Connect()
         {
+            return SendAllMessagesToClient();
+        }
+
+        public Task Reconnect(IEnumerable<string> groups)
+        {
+            return SendAllMessagesToClient();
+        }
+
+        private dynamic SendAllMessagesToClient()
+        {
             return Clients[Context.ConnectionId].sendToClient(ToJsonArray(_messageStore.GetAll()));
         }
 
@@ -38,11 +48,6 @@ namespace SimpleBoard.Domain
         private string ToJsonArray(IEnumerable<string> msgs)
         {
             return "{\"Messages\":[" + string.Join(", " + Environment.NewLine, msgs) + "]}";
-        }
-
-        public Task Reconnect(IEnumerable<string> groups)
-        {
-            return null;
         }
     }
 }
